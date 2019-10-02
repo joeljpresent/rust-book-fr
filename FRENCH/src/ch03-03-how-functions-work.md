@@ -458,8 +458,8 @@ expression. Calling a macro is an expression. The block that we use to create
 new scopes, `{}`, is an expression, for example:
 -->
 
-Les expressions sont évaluées et seront ce que vous écrirez le plus en Rust
-en dehors des instructions.
+Les expressions sont évaluées et seront ce que vous écrirez le plus en Rust (hormis les instructions).
+
 Prenez une simple opération mathématique, comme `5 + 6`, qui est
 une expression qui s'évalue à la valeur `11`. Les expressions peuvent faire
 partie d'une instruction : dans l'encart 3-1, le `6` dans l'instruction
