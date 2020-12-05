@@ -1,16 +1,16 @@
 // ANCHOR: here
 #[derive(Debug)] // pour pouvoir afficher l'État
-enum USAState {
+enum EtatUs {
     Alabama,
     Alaska,
     // -- partie masquée ici --
 }
 
-enum USACoin {
+enum Piece {
     Penny,
     Nickel,
     Dime,
-    Quarter(USAState),
+    Quarter(EtatUs),
 }
 // ANCHOR_END: here
 

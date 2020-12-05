@@ -1,17 +1,17 @@
 // ANCHOR: here
-enum USACoin {
+enum Piece {
     Penny,
     Nickel,
     Dime,
     Quarter,
 }
 
-fn valeur_en_centimes(piece: USACoin) -> u8 {
+fn valeur_en_centimes(piece: Piece) -> u8 {
     match piece {
-        USACoin::Penny => 1,
-        USACoin::Nickel => 5,
-        USACoin::Dime => 10,
-        USACoin::Quarter => 25,
+        Piece::Penny => 1,
+        Piece::Nickel => 5,
+        Piece::Dime => 10,
+        Piece::Quarter => 25,
     }
 }
 // ANCHOR_END: here
