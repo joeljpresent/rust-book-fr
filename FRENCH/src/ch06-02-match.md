@@ -51,11 +51,13 @@ pièce inconnue des États-Unis d'Amérique et qui peut, de la même manière qu
 machine à trier, déterminer quelle pièce c'est et retourner sa valeur en
 centimes, comme ci-dessous dans l'encart 6-3.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-03/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-03/src/main.rs:here}}
@@ -140,11 +142,13 @@ exemple, le code suivant va afficher “Un centime porte-bonheur !” à chaque
 que la méthode est appelée avec une valeur `Piece::Penny` mais va continuer à
 retourner la dernière valeur du bloc, `1` :
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/no-listing-08-match-arm-multiple-lines/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/no-listing-08-match-arm-multiple-lines/src/main.rs:here}}
@@ -184,11 +188,13 @@ cette information à notre `enum` en changeant la variante `Quarter` pour y
 ajouter une valeur `EtatUs` qui y sera stockée à l'intérieur, comme nous
 l'avons fait dans l'encart 6-4.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-04/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-04/src/main.rs:here}}
@@ -227,11 +233,13 @@ correspondance `Piece::Quarter`, la variable `etat` sera liée à la valeur de
 l'État de cette pièce. Ensuite, nous pourrons utiliser `etat` dans le code de
 cette branche, comme ceci :
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/no-listing-09-variable-in-pattern/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/no-listing-09-variable-in-pattern/src/main.rs:here}}
@@ -294,11 +302,13 @@ Listing 6-5.
 Cette fonction est très facile à écrire, grâce à `match`, et ressemblera à
 l'encart 6-5.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:here}}
@@ -322,11 +332,13 @@ Examinons la première exécution de `plus_un` en détail. Lorsque nous appelons
 `plus_un(cinq)`, la variable `x` dans le corps de `plus_un` aura la valeur
 `Some(5)`. Ensuite, nous comparons cela à chaque branche du `match`.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust,ignore
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:first_arm}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:first_arm}}
@@ -340,11 +352,13 @@ next arm.
 La valeur `Some(5)` ne correspond pas au motif `None`, donc nous continuons à la
 branche suivante.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust,ignore
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:second_arm}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:second_arm}}
@@ -371,11 +385,13 @@ Now let’s consider the second call of `plus_one` in Listing 6-5, where `x` is
 Maintenant, regardons le second appel à `plus_un` dans l'encart 6-5, où `x` vaut
 `None`. Nous entrons dans le `match` et nous le comparons à la première branche.
 
+<!-- markdownlint-disable -->
 <!--
 ```rust,ignore
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:first_arm}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/listing-06-05/src/main.rs:first_arm}}
@@ -420,11 +436,13 @@ of our `plus_one` function that has a bug and won’t compile:
 Il y a un autre point de `match` que nous devons aborder. Examinez cette version
 de notre fonction `plus_un` qui a un bogue et ne va pas se compiler :
 
+<!-- markdownlint-disable -->
 <!--
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/no-listing-10-non-exhaustive-match/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/no-listing-10-non-exhaustive-match/src/main.rs:here}}
@@ -440,11 +458,13 @@ Nous n'avons pas géré le cas du `None`, donc ce code va générer un bogue.
 Heureusement, c'est un bogue que Rust sait gérer. Si nous essayons de compiler
 ce code, nous allons obtenir cette erreur :
 
+<!-- markdownlint-disable -->
 <!--
 ```console
 {{#include ../listings-sources/ch06-enums-and-pattern-matching/no-listing-10-non-exhaustive-match/output.txt}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```console
 {{#include ../listings/ch06-enums-and-pattern-matching/no-listing-10-non-exhaustive-match/output.txt}}
@@ -487,11 +507,13 @@ toutes les valeurs possibles. Par exemple, les valeurs valides d'un `u8` vont de
 pas lister 0, 2, 4, 6, 8, 9 et ainsi de suite jusqu'à 255. Heureusement, nous
 n'avons pas à le faire : nous pouvons utiliser le motif spécial `_` à la place :
 
+<!-- markdownlint-disable -->
 <!--
 ```rust
 {{#rustdoc_include ../listings-sources/ch06-enums-and-pattern-matching/no-listing-11-underscore-placeholder/src/main.rs:here}}
 ```
 -->
+<!-- markdownlint-restore -->
 
 ```rust
 {{#rustdoc_include ../listings/ch06-enums-and-pattern-matching/no-listing-11-underscore-placeholder/src/main.rs:here}}
