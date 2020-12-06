@@ -123,7 +123,7 @@ entire `match` expression.
 -->
 
 Le code correspondant à chaque branche est une expression, et la valeur qui
-résulte de l'expresssion dans la branche correspondante est la valeur qui sera
+résulte de l'expression dans la branche correspondante est la valeur qui sera
 retournée par l'expression `match`.
 
 <!--
@@ -403,7 +403,7 @@ It matches! There’s no value to add to, so the program stops and returns the
 arms are compared.
 -->
 
-Cela correspond ! Il n'y a pas de valeur à additionner, donc le programmme
+Cela correspond ! Il n'y a pas de valeur à additionner, donc le programme
 s'arrête et retourne la valeur `None` qui est dans le côté droit du `=>`. Comme
 la première branche correspond, les autres branches ne sont pas comparées.
 
