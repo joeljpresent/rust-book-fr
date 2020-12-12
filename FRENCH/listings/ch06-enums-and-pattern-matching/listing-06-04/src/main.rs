@@ -6,7 +6,7 @@ enum EtatUs {
     // -- partie masquée ici --
 }
 
-enum Piece {
+enum PieceUs {
     Penny,
     Nickel,
     Dime,

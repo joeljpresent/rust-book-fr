@@ -85,7 +85,7 @@ nous utilisons le mot-clé `match` suivi par une expression, qui dans notre cas
 est la valeur de `piece`. Cela ressemble beaucoup à une expression utilisée avec
 `if`, mais il y a une grosse différence : avec `if`, l'expression doit retourner
 une valeur booléenne, mais ici, elle peut être de n'importe quel type. Dans cet
-exemple, `piece` est de type `Piece`, qui est l'énumération que nous avons
+exemple, `piece` est de type `PieceUs`, qui est l'énumération que nous avons
 définie à la ligne 1.
 
 <!--
@@ -96,10 +96,10 @@ is just the value `1`. Each arm is separated from the next with a comma.
 -->
 
 Ensuite, nous avons les branches du `match`. Une branche a deux parties : un
-motif et du code. La première branche a ici pour motif la valeur `Piece::Penny`
-et ensuite l'opérateur `=>` qui sépare le motif et le code à exécuter. Le code
-dans ce cas est uniquement la valeur `1`. Chaque branche est séparée de la
-suivante par une virgule.
+motif et du code. La première branche a ici pour motif la valeur
+`PieceUs::Penny` et ensuite l'opérateur `=>` qui sépare le motif et le code à
+exécuter. Le code dans ce cas est uniquement la valeur `1`. Chaque branche est
+séparée de la suivante par une virgule.
 
 <!--
 When the `match` expression executes, it compares the resulting value against
@@ -139,7 +139,7 @@ correspondante est court, comme c'est le cas dans l'encart 6-3 où chaque branch
 retourne simplement une valeur. Si vous voulez exécuter plusieurs lignes de
 code dans une branche d'un `match`, vous devez utiliser les accolades. Par
 exemple, le code suivant va afficher “Un centime porte-bonheur !” à chaque fois
-que la méthode est appelée avec une valeur `Piece::Penny` mais va continuer à
+que la méthode est appelée avec une valeur `PieceUs::Penny` mais va continuer à
 retourner la dernière valeur du bloc, `1` :
 
 <!-- markdownlint-disable -->
@@ -205,7 +205,7 @@ l'avons fait dans l'encart 6-4.
 also holds a `UsState` value</span>
 -->
 
-<span class="caption">Encart 6-4 : Une énumération `Piece` dans laquelle la
+<span class="caption">Encart 6-4 : Une énumération `PieceUs` dans laquelle la
 variante `Quarter` stocke en plus une valeur de type `EtatUs`</span>
 
 <!--
@@ -228,8 +228,8 @@ quarter’s state. Then we can use `state` in the code for that arm, like so:
 -->
 
 Dans l'expression `match` de ce code, nous avons ajouté une variable `etat` au
-motif qui correspond à la variante `Piece::Quarter`. Quand on aura une
-correspondance `Piece::Quarter`, la variable `etat` sera liée à la valeur de
+motif qui correspond à la variante `PieceUs::Quarter`. Quand on aura une
+correspondance `PieceUs::Quarter`, la variable `etat` sera liée à la valeur de
 l'État de cette pièce. Ensuite, nous pourrons utiliser `etat` dans le code de
 cette branche, comme ceci :
 
@@ -254,13 +254,14 @@ then use that binding in the `println!` expression, thus getting the inner
 state value out of the `Coin` enum variant for `Quarter`.
 -->
 
-Si nous appelons `valeur_en_centimes(Piece::Quarter(EtatUs::Alaska))`, `piece`
-vaudra `Piece::Quarter(EtatUs::Alaska)`. Quand nous comparons cette valeur avec
-toutes les branches du `match`, aucune d'entre elles ne correspondra jusqu'à ce
-qu'on arrive à `Piece::Quarter(etat)`. À partir de ce moment, la variable `etat`
-aura la valeur `EtatUs::Alaska`. Nous pouvons alors utiliser cette variable dans
-l'expression `println!`, ce qui nous permet d'afficher la valeur de l'État à
-l'intérieur de la variante `Quarter` de l'énumération `Piece`.
+Si nous appelons `valeur_en_centimes(PieceUs::Quarter(EtatUs::Alaska))`, `piece`
+vaudra `PieceUs::Quarter(EtatUs::Alaska)`. Quand nous comparons cette valeur
+avec toutes les branches du `match`, aucune d'entre elles ne correspondra
+jusqu'à ce qu'on arrive à `PieceUs::Quarter(etat)`. À partir de ce moment, la
+variable `etat` aura la valeur `EtatUs::Alaska`. Nous pouvons alors utiliser
+cette variable dans l'expression `println!`, ce qui nous permet d'afficher la
+valeur de l'État à l'intérieur de la variante `Quarter` de l'énumération
+`PieceUs`.
 
 <!--
 ### Matching with `Option<T>`
@@ -279,7 +280,7 @@ the same.
 Dans la section précédente, nous voulions obtenir la valeur interne `T` dans le
 cas de `Some` lorsqu'on utilisait `Option<T>` ; nous pouvons aussi gérer les
 `Option<T>` en utilisant `match` comme nous l'avons fait avec l'énumération
-`Piece` ! Au lieu de comparer des pièces, nous allons comparer les variantes
+`PieceUs` ! Au lieu de comparer des pièces, nous allons comparer les variantes
 de `Option<T>`, mais la façon d'utiliser l'expression `match` reste la même.
 
 <!--
