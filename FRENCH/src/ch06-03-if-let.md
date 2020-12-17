@@ -12,7 +12,7 @@ execute code if the value is 3.
 -->
 
 La syntaxe `if let` vous permet de combiner `if` et `let` afin de gérer les
-valeurs qui correspondent à un motif donné tout en ignorant toutes les autres.
+valeurs qui correspondent à un motif donné, tout en ignorant les autres.
 Imaginons le programme dans l'encart 6-6 qui fait un `match` sur une valeur
 `Option<u8>` mais n'a besoin d'exécuter du code que si la valeur est 3.
 
