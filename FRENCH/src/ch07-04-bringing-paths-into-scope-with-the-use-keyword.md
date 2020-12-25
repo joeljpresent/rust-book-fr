@@ -72,7 +72,7 @@ symbolique dans le système de fichier. Grâce à l'ajout de
 `use crate::salle_a_manger::accueil` dans la crate racine, `accueil` est
 maintenant un nom valide dans cette portée, comme si le module `accueil` avait
 été défini dans la crate racine. Les chemins importés dans la portée via `use`
-sont soumis au principe de protection, tout comme les autres chemins.
+doivent respecter les règles de visibilité, tout comme les autres chemins.
 
 <!--
 You can also bring an item into scope with `use` and a relative path. Listing
@@ -317,7 +317,7 @@ considered idiomatic, so the choice is up to you!
 Dans la seconde instruction `use`, nous avons choisi `IoResult` comme nouveau
 nom du type `std::io::Result`, qui n'est plus en conflit avec le `Result` de
 `std::fmt` que nous avons aussi importé dans la portée. Les encarts 7-15 et 7-16
-sont idéaux, donc le choix vous revient ! 
+sont idéaux, donc le choix vous revient !
 
 <!--
 ### Re-exporting Names with `pub use`
