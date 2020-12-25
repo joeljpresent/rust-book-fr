@@ -14,7 +14,7 @@ focus on modules!
 
 Dans cette section, nous allons aborder les modules et les autres outils du
 système de modules, à savoir les *chemins* qui nous permettent de nommer les
-éléments; l'utilisation du mot-clé `use` qui importe un chemin dans la portée;
+éléments ; l'utilisation du mot-clé `use` qui importe un chemin dans la portée ;
 et le mot-clé `pub` qui rend publics les éléments. Nous verrons aussi le mot-clé
 `as`, les paquets externes, et l'opérateur glob. Pour commencer, penchons-nous
 sur les modules !
@@ -72,7 +72,7 @@ Listing 7-1 into *src/lib.rs* to define some modules and function signatures.
 Pour organiser notre crate de la même manière qu'un vrai restaurant, nous
 pouvons organiser les fonctions avec des modules imbriqués. Créez une nouvelle
 bibliothèque qui s'appelle `restaurant` en utilisant
-`cargo new --lib restaurant`; puis écrivez le code de l'encart 7-1 dans
+`cargo new --lib restaurant` ; puis écrivez le code de l'encart 7-1 dans
 *src/lib.rs* afin de définir quelques modules et quelques signatures de
 fonctions.
 
@@ -215,7 +215,7 @@ need a way to find our modules.
 -->
 
 L'arborescence des modules peut rappeler les dossiers du système de fichiers de
-votre ordinateur; et c'est une excellente comparaison ! Comme les dossier dans
+votre ordinateur ; et c'est une excellente comparaison ! Comme les dossiers dans
 un système de fichiers, vous utilisez les modules pour organiser votre code. Et
 comme pour les fichiers dans un dossier, nous avons besoin d'un moyen de trouver
 nos modules.
