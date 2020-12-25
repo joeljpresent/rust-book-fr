@@ -210,7 +210,7 @@ make an item like a function or struct private, you put it in a module.
 -->
 
 Les modules ne servent pas uniquement à organiser votre code. Ils définissent
-aussi les *limites de protection* de Rust : le code externe n'est pas autorisé
+aussi les *limites de visibilité* de Rust : le code externe n'est pas autorisé
 à connaître, à appeler ou à se fier à des éléments internes au module. Donc, si
 vous voulez rendre un élément privé comme une fonction ou une structure, vous
 devez le placer dans un module.
@@ -227,14 +227,14 @@ goes on in there is private to restaurant customers, but office managers can
 see and do everything in the restaurant in which they operate.
 -->
 
-La protection avec Rust fait en sorte que tous les éléments (fonctions,
+Le fonctionnement de la visibilité en Rust est que tous les éléments (fonctions,
 méthodes, structures, énumérations, modules et constantes) sont privés par
 défaut. Les éléments dans un module parent ne peuvent pas utiliser les éléments
 privés dans les modules enfants, mais les éléments dans les modules enfants
 peuvent utiliser les éléments dans les modules parents. C'est parce que les
 modules enfants englobent et cachent les détails de leur implémentation, mais
 les modules enfants peuvent voir dans quel contexte ils sont définis. Pour
-continuer la métaphore du restaurant, considérez que les règles de protection
+continuer la métaphore du restaurant, considérez que les règles de visibilité
 sont comme les cuisines d'un restaurant : ce qui s'y passe n'est pas connu des
 clients, mais les gestionnaires peuvent tout voir et tout faire dans le
 restaurant dans lequel ils travaillent.
@@ -342,7 +342,7 @@ modules.
 -->
 
 Les erreurs dans l'encart 7-6 nous informent que la fonction
-`ajouter_a_la_liste_attente` est privée. Les règles de protection s'appliquent
+`ajouter_a_la_liste_attente` est privée. Les règles de visibilité s'appliquent
 aussi bien aux modules qu'aux structures, énumérations, fonctions et méthodes.
 
 <!--
@@ -387,7 +387,7 @@ double-check why adding the `pub` keyword lets us use these paths in
 
 Maintenant, le code va compiler ! Analysons les chemins relatifs et absolus et
 vérifions pourquoi l'ajout du mot-clé `pub` nous permet d'utiliser ces chemins
-dans `ajouter_a_la_liste_attente` tout en respectant les règles de protection.
+dans `ajouter_a_la_liste_attente` tout en respectant les règles de visibilité.
 
 <!--
 In the absolute path, we start with `crate`, the root of our crate’s module
