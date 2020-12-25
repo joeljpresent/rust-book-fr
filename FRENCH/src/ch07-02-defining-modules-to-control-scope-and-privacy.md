@@ -2,7 +2,7 @@
 ## Defining Modules to Control Scope and Privacy
 -->
 
-## Définir des modules pour gérer la portée et la protection
+## Définir des modules pour gérer la portée et la visibilité
 
 <!--
 In this section, we’ll talk about modules and other parts of the module system,
@@ -28,7 +28,7 @@ detail and not available for outside use (*private*).
 
 Les *modules* nous permettent de regrouper le code d'une crate pour une
 meilleure lisibilité et pour la facilité de réutilisation. Les modules
-permettent aussi de gérer la *protection* des éléments, qui précise si un
+permettent aussi de gérer la *visibilité* des éléments, qui précise si un
 élément peut être utilisé à l'extérieur du module (*c'est public*) ou s'il est
 un constituant interne et n'est pas disponible pour une utilisation externe
 (*c'est privé*).
