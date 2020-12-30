@@ -204,8 +204,8 @@ aussi que certains modules sont les *frères* d'autres modules, ce qui veut dire
 qu'ils sont définis dans le même module (`accueil` et `service` sont définis
 dans `salle_a_manger`). Pour prolonger la métaphore familiale, si le module A
 est contenu dans le module B, on dit que le module A est *l'enfant* du module B
-et que ce module B est le *parent* du module A. Notez aussi que tout le module
-implicite `crate` est le parent de toute cette arborescence.
+et que ce module B est le *parent* du module A. Notez aussi que le module
+implicite nommé `crate` est le parent de toute cette arborescence.
 
 <!--
 The module tree might remind you of the filesystem’s directory tree on your
