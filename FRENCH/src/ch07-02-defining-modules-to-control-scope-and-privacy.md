@@ -40,7 +40,7 @@ empty to concentrate on the organization of the code, rather than actually
 implement a restaurant in code.
 -->
 
-Voici un exemple, écrivons une crate de bibliothèque qui permet de simuler un
+Voici un exemple : écrivons une crate de bibliothèque qui permet de simuler un
 restaurant. Nous allons définir les signatures des fonctions mais nous allons
 laisser leurs corps vides pour nous concentrer sur l'organisation du code,
 plutôt que de coder pour de vrai un restaurant.
@@ -55,7 +55,7 @@ work in the kitchen, dishwashers clean up, and managers do administrative work.
 
 Dans le secteur de la restauration, certaines parties d'un restaurant sont
 assimilées à la *salle à manger* et d'autres *aux cuisines*. La partie salle à
-manger est l'endroit où se trouvent les clients; c'est l'endroit où les hôtes
+manger est l'endroit où se trouvent les clients ; c'est l'endroit où les hôtes
 installent les clients, où les serveurs prennent les commandes et encaissent les
 clients, et où les barmans préparent des boissons. Dans la partie cuisines, nous
 retrouvons les chefs et les cuisiniers qui travaillent dans la cuisine, mais
