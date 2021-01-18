@@ -23,7 +23,7 @@ pub fn manger_au_restaurant() {
               repas.tartine_grillee);
 
     // La prochaine ligne ne va pas se compiler si nous ne la commentons pas;
-    // car nous ne sommes pas autorisé à voir ou modifier le fruit de saison
+    // car nous ne sommes pas autorisés à voir ou modifier le fruit de saison
     // qui accompagne le repas.
 
     // repas.fruit_de_saison = String::from("myrtilles");
