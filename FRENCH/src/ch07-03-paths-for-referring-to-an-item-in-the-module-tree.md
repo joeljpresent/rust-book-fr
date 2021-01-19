@@ -54,7 +54,7 @@ about `pub`. Note that this example won’t compile just yet; we’ll explain wh
 in a bit.
 -->
 
-Reprenons notre exemple de l'encart 7-1. Comment pourrions-nous appeler la
+Reprenons notre exemple de l'encart 7-1. Comment pouvons-nous appeler la
 fonction `ajouter_a_la_liste_attente` ? Cela revient à se demander : quel est le
 chemin de la fonction `ajouter_a_la_liste_attente` ? Dans l'encart 7-3, nous
 avons un peu simplifié notre code en enlevant quelques modules et quelques
@@ -447,7 +447,7 @@ the `..` syntax. Why would we want to do this?
 
 Nous pouvons aussi créer des chemins relatifs qui commencent à partir du module
 parent en utilisant `super` au début du chemin. C'est comme débuter un chemin
-dans le système de fichiers avec la syntaxe `..`. Mais pourquoi voudrions-nous
+dans un système de fichiers avec la syntaxe `..`. Mais pourquoi voudrions-nous
 faire cela ?
 
 <!--
