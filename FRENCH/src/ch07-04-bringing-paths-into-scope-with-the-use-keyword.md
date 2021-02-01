@@ -67,7 +67,7 @@ module had been defined in the crate root. Paths brought into scope with `use`
 also check privacy, like any other paths.
 -->
 
-Dans une portée, utiliser un `use` et un chemin revient à créer un lien
+Dans une portée, utiliser un `use` et un chemin s'apparente à créer un lien
 symbolique dans le système de fichier. Grâce à l'ajout de
 `use crate::salle_a_manger::accueil` à la racine de la crate, `accueil` est
 maintenant un nom valide dans cette portée, comme si le module `accueil` avait
