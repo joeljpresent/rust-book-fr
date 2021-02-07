@@ -17,7 +17,7 @@ they’re local items with the `use` keyword.
 Les chemins que nous avons écrits jusqu'ici peuvent paraître pénibles car trop
 longs et répétitifs. Par exemple, dans l'encart 7-7, que nous ayons choisi
 d'utiliser le chemin absolu ou relatif pour la fonction
-`ajouter_a_la_liste_attente`, nous devrions aussi écrire `salle_a_manger` et
+`ajouter_a_la_liste_attente`, nous aurions dû aussi écrire `salle_a_manger` et
 `accueil` à chaque fois que nous voulions appeler `ajouter_a_la_liste_attente`.
 Heureusement, il existe une solution pour simplifier ce cheminement.
 Nous pouvons importer un chemin dans la portée et appeler ensuite les éléments
@@ -164,10 +164,10 @@ defined while still minimizing repetition of the full path. The code in Listing
 Bien que l'encart 7-11 et 7-13 accomplissent la même tâche, l'encart 7-11 est la
 façon idéale d'importer une fonction dans la portée via `use`. Le fait
 d'importer le module parent de la fonction dans notre portée avec `use`, de
-sorte que nous ayons à préciser le module parent quand nous appelons la fonction
-précise clairement que la fonction n'est pas définie localement, tout en
-minimisant la répétition du chemin complet. Nous ne pouvons pas en déduire
-facilement où est défini `ajouter_a_la_liste_attente` dans l'encart 7-13.
+sorte que nous ayons à préciser le module parent quand nous appelons la
+fonction, précise clairement que la fonction n'est pas définie localement, tout
+en minimisant la répétition du chemin complet. Nous ne pouvons pas repérer
+facilement là où est défini `ajouter_a_la_liste_attente` dans l'encart 7-13.
 
 <!--
 On the other hand, when bringing in structs, enums, and other items with `use`,
@@ -224,7 +224,7 @@ different parent modules and how to refer to them.
 Il y a une exception à cette pratique : nous ne pouvons pas utiliser
 l'instruction `use` pour importer deux éléments avec le même nom dans la portée,
 car Rust ne l'autorise pas. L'encart 7-15 nous montre comment importer puis
-utiliser deux types `Result` ayant le même nom mais dont leurs modules parents
+utiliser deux types `Result` ayant le même nom mais dont les modules parents
 sont distincts.
 
 <!--
@@ -262,7 +262,7 @@ Comme vous pouvez le constater, l'utilisation des modules parents permet de
 distinguer les deux types `Result`. Si nous avions utilisé
 `use std::fmt::Result` et `use std::io::Result`, nous aurions deux types nommés
 `Result` dans la même portée et donc Rust ne pourrait pas comprendre lequel nous
-utiliserions en demandant `Result`.
+voudrions utiliser en demandant `Result`.
 
 <!--
 ### Providing New Names with the `as` Keyword
@@ -280,7 +280,7 @@ code in Listing 7-15 by renaming one of the two `Result` types using `as`.
 Il y a une autre solution au fait d'avoir deux types du même nom dans la même
 portée à cause de `use` : après le chemin, nous pouvons rajouter `as` suivi d'un
 nouveau nom local, ou alias, sur le type. L'encart 7-16 nous montre une autre
-façon d'écrire le code de l'encart 7-15 en utilisant `as` pour renommant un des
+façon d'écrire le code de l'encart 7-15 en utilisant `as` pour renommer un des
 deux types `Result`.
 
 <!--
@@ -398,14 +398,14 @@ the library and programmers calling the library.
 -->
 
 Réexporter est utile quand la structure interne de votre code est différente de
-comment les développeurs qui utilisent votre code imaginent le domaine. Par
+la façon dont les développeurs qui utilisent votre code se la représentent. Par
 exemple, dans cette métaphore du restaurant, les personnes qui font fonctionner
 le restaurant se structurent en fonction de la “salle à manger” et des
 “cuisines”. Mais les clients qui utilisent le restaurant ne vont probablement
-voir les choses ainsi. Avec `pub use`, nous pouvons écrire notre code selon une
-certaine organisation, mais l'exposer avec une organisation différente. En
+pas voir les choses ainsi. Avec `pub use`, nous pouvons écrire notre code selon
+une certaine organisation, mais l'exposer avec une organisation différente. En
 faisant ainsi, la bibliothèque est bien organisée autant pour les développeurs
-qui travaillent sur la bibliothèque que les développeurs qui utilisent la
+qui travaillent sur la bibliothèque que pour les développeurs qui utilisent la
 bibliothèque.
 
 <!--
@@ -422,7 +422,7 @@ added this line to *Cargo.toml*:
 
 Dans le chapitre 2, nous avions développé un projet de jeu du plus ou du moins
 qui utilisait le paquet externe `rand` afin d'obtenir des nombres aléatoires.
-Pour pouvoir utiliser `rand` dans notre projet, nous avons ajouté cette ligne
+Pour pouvoir utiliser `rand` dans notre projet, nous avions ajouté cette ligne
 dans *Cargo.toml* :
 
 <!--
@@ -468,10 +468,10 @@ into scope and called the `rand::thread_rng` function:
 -->
 
 Ensuite, pour importer les définitions de `rand` dans la portée de notre paquet,
-nous avons ajouté une ligne `use` qui commence avec le nom de la crate, `rand`,
-et nous avons listé les éléments que nous voulions importer dans notre portée.
+nous avions ajouté une ligne `use` qui commence avec le nom de la crate, `rand`,
+et nous avions listé les éléments que nous voulions importer dans notre portée.
 Dans la section [“Générer le nombre secret”][rand]<!-- ignore --> du chapitre 2,
-nous avons importé le trait `Rng` dans la portée, puis nous avons appelé la
+nous avions importé le trait `Rng` dans la portée, puis nous avions appelé la
 fonction `rand::thread_rng` :
 
 <!--
@@ -546,7 +546,7 @@ Listing 2-4 bring items from `std` into scope:
 Si vous utilisez de nombreux éléments définis dans une même crate ou dans un
 même module, lister chaque élément sur sa propre ligne prendra beaucoup d'espace
 vertical dans vos fichiers. Par exemple, ces deux instructions `use`, que nous
-avions dans le jeu du plus ou du moins, dans l'encart 2-4, importaient des
+avions dans le jeu du plus ou du moins dans l'encart 2-4, importaient des
 éléments de `std` dans la portée :
 
 <!--
@@ -572,9 +572,9 @@ colons, and then curly brackets around a list of the parts of the paths that
 differ, as shown in Listing 7-18.
 -->
 
-À la place, nous pouvons utiliser des chemins imbriqués afin d'importer les
+À la place, nous pouvons utiliser des chemins imbriqués afin d'importer ces
 mêmes éléments dans la portée en une seule ligne. Nous pouvons faire cela en
-indiquant la partie commune du chemin, suivi de deux deux-points, puis
+indiquant la partie commune du chemin, suivi d'un double deux-points, puis
 d'accolades autour d'une liste des éléments qui diffèrent entre les chemins,
 comme dans l'encart 7-18 :
 
@@ -724,8 +724,8 @@ was defined.
 Cette instruction `use` va importer tous les éléments publics définis dans
 `std::collections` dans la portée courante. Mais soyez prudent quand vous
 utilisez l'opérateur global ! L'opérateur global rend difficile à dire quels
-éléments sont dans la portée et où un élément utilisé dans notre programme a été
-défini.
+éléments sont dans la portée et là où un élément utilisé dans notre programme a
+été défini.
 
 <!--
 The glob operator is often used when testing to bring everything under test
