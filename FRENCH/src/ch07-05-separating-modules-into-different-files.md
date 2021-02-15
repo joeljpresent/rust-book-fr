@@ -95,8 +95,8 @@ declaration of the `hosting` module:
 -->
 
 Utiliser un point-virgule après `mod salle_a_manger` plutôt que de créer un bloc
-indique à Rust de charger le contenu du module à partir d'un autre fichier avec
-le même nom que le module. Pour continuer avec notre exemple et déplacer
+indique à Rust de charger le contenu du module à partir d'un autre fichier qui
+porte le même nom que le module. Pour continuer avec notre exemple et déplacer
 également le module `accueil` dans son propre fichier, nous modifions
 *src/salle_a_manger.rs* pour avoir uniquement la déclaration du module
 `accueil` :
