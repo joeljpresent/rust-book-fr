@@ -39,7 +39,7 @@ utilisées dans les programmes Rust :
 * Le *vecteur* qui vous permet de stocker un nombre variable de valeurs les unes
   à côté des autres.
 * La *String*, qui est une collection de caractères. Nous avons déjà aperçu le
-  type `String` précédemment, mais dans ce chapitre, nous allons le découvrir en
+  type `String` précédemment, mais dans ce chapitre, nous allons l'étudier en
   détail.
 * La *table de hachage* qui vous permet d'associer une valeur à une clé précise.
   C'est une implémentation spécifique d'une structure de données plus
@@ -64,5 +64,5 @@ We’ll discuss how to create and update vectors, strings, and hash maps, as wel
 as what makes each special.
 -->
 
-Nous allons voir comment créer et modifier les vecteurs, les Strings, et les
+Nous allons voir comment créer et modifier les vecteurs, les Strings et les
 tables de hachage, et étudier leurs différences.
