@@ -13,8 +13,8 @@ lines of text in a file or the prices of items in a shopping cart.
 -->
 
 Le premier type de collection que nous allons voir est `Vec<T>`, aussi appelé
-*vecteur*. Les vecteurs vous permettent de stocker plus qu'une seule valeur dans
-une seule structure de données qui stocke les valeurs proches l'une de l'autre
+*vecteur*. Les vecteurs vous permettent de stocker plus d'une valeur dans une
+seule structure de données qui stocke les valeurs les unes à côté des autres
 dans la mémoire. Les vecteurs peuvent stocker uniquement des valeurs du même
 type. Ils sont utiles lorsque vous avez une liste d'éléments, tels que les
 lignes de texte provenant d'un fichier ou les prix des articles d'un panier
@@ -31,8 +31,8 @@ To create a new, empty vector, we can call the `Vec::new` function, as shown in
 Listing 8-1.
 -->
 
-Pour créer un nouveau vecteur vide, nous pouvons appeler la fonction
-`Vec::new`, comme dans l'encart 8-1.
+Pour créer un nouveau vecteur vide, nous pouvons appeler la fonction `Vec::new`,
+comme dans l'encart 8-1.
 
 <!--
 ```rust
