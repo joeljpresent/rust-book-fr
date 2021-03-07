@@ -575,10 +575,10 @@ moment de la compilation afin de connaître la quantité de mémoire nécessaire
 pour stocker chaque élément sur le tas. Le second avantage est que nous sommes
 précis sur les types autorisés dans ce vecteur. Si Rust avait permis qu'un
 vecteur stocke n'importe quel type, il y aurait pu avoir un risque qu'un ou
-plusieurs des types provoque(nt) une erreur avec les manipulations effectuées
-sur les éléments du vecteur. L'utilisation d'une énumération ainsi qu'une
-expression `match` permet à Rust de garantir au moment de la compilation que
-tous les cas possibles sont traités, comme nous l'avons appris au chapitre 6.
+plusieurs des types provoquent une erreur avec les manipulations effectuées sur
+les éléments du vecteur. L'utilisation d'une énumération ainsi qu'une expression
+`match` permet à Rust de garantir au moment de la compilation que tous les cas
+possibles sont traités, comme nous l'avons appris au chapitre 6.
 
 <!--
 When you’re writing a program, if you don’t know the exhaustive set of types
