@@ -282,9 +282,9 @@ shown in Listing 8-6.
 
 Rust a deux manières de récupérer un élément afin que vous puissiez choisir
 comment le programme doit se comporter lorsque vous essayez d'utiliser un
-indice dont le vecteur n'a pas d'élément correspondant. Par exemple, regardons
-ce qu'un programme fait s'il a vecteur qui contient cinq éléments et qu'il
-essaye d'accéder à l'élément à l'indice 100, comme dans l'encart 8-6.
+indice pour lequel le vecteur n'a pas d'élément correspondant. Par exemple,
+regardons ce qu'un programme fait s'il a vecteur qui contient cinq éléments et
+qu'il essaye d'accéder à l'élément à l'indice 100, comme dans l'encart 8-6.
 
 <!--
 ```rust,should_panic,panics
