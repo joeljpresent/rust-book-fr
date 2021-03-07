@@ -178,7 +178,7 @@ Like any other `struct`, a vector is freed when it goes out of scope, as
 annotated in Listing 8-4.
 -->
 
-Comme tous les autres `struct`, un vecteur est libéré quand il sort de la
+Comme toutes les autres structures, un vecteur est libéré quand il sort de la
 portée, comme précisé dans l'encart 8-4.
 
 <!--
