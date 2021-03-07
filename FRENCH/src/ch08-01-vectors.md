@@ -66,12 +66,12 @@ hold elements of the `i32` type.
 Remarquez que nous avons ajouté ici une annotation de type. Comme nous
 n'ajoutons pas de valeurs dans ce vecteur, Rust ne sait pas quel type d'éléments
 nous souhaitons stocker. C'est une information importante. Les vecteurs sont
-implémentés avec la généricité ; nous allons voir comment utiliser la généricité
-sur vos propres types au chapitre 10. Pour l'instant, sachez que le type
-`Vec<T>` qui est fourni par la bibliothèque standard peut stocker n'importe quel
-type, et lorsqu'un vecteur précis stocke un type précis, ce type est renseigné
-entre des chevrons. Dans l'encart 8-1, nous précisons à Rust que le `Vec<T>`
-dans `v` va stocker des éléments de type `i32`.
+implémentés avec la généricité ; nous verrons comment utiliser la généricité sur
+vos propres types au chapitre 10. Pour l'instant, sachez que le type `Vec<T>`
+qui est fourni par la bibliothèque standard peut stocker n'importe quel type, et
+lorsqu'un vecteur précis stocke un type précis, ce type est renseigné entre des
+chevrons. Dans l'encart 8-1, nous précisons à Rust que le `Vec<T>` dans `v` va
+stocker des éléments de type `i32`.
 
 <!--
 In more realistic code, Rust can often infer the type of value you want to
