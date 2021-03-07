@@ -533,7 +533,8 @@ ultimately, holds different types. We’ve demonstrated this in Listing 8-10.
 -->
 
 Par exemple, imaginons que nous voulions obtenir les valeurs d'une ligne d'une
-feuille de calcul dans laquelle quelques colonnes sont des entiers, d'autres des nombres à virgule flottante, et quelques chaînes de caractères. Nous pouvons
+feuille de calcul dans laquelle quelques colonnes sont des entiers, d'autres des
+nombres à virgule flottante, et quelques chaînes de caractères. Nous pouvons
 définir une énumération dont les variantes vont avoir les différents types, et
 ainsi toutes les variantes de l'énumération seront du même type : celui de
 l'énumération. Ensuite, nous pouvons créer un vecteur qui stocke cette
