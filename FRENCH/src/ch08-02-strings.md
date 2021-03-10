@@ -33,14 +33,14 @@ complicated by the differences between how people and computers interpret
 -->
 
 Il est pertinent de présenter les chaînes de caractères comme des collections
-car les chaînes de caractères sont en réalité des ensembles d'octets, avec
-quelques méthodes supplémentaires qui sont utiles lorsque ces octets sont
-considérés comme du texte. Dans cette section, nous allons voir les points
-communs entre le fonctionnement des `String` et celui des autres collections,
-comme la création, la modification, et la lecture. Nous verrons les raisons pour
-lesquelles les `String` sont différents des autres collections, en particulier
-pourquoi l'indexation d'un `String` est compliquée à cause de la façon dont les
-gens et les ordinateurs interprètent les données d'une `String`.
+car les chaînes de caractères sont en réalité des suites d'octets, avec quelques
+méthodes supplémentaires qui sont utiles lorsque ces octets sont considérés
+comme du texte. Dans cette section, nous allons voir les points communs entre le
+fonctionnement des `String` et celui des autres collections, comme la création,
+la modification, et la lecture. Nous verrons les raisons pour lesquelles les
+`String` sont différentes des autres collections, en particulier pourquoi
+l'indexation d'une `String` est compliquée à cause des différences entre la
+façon dont les gens et les ordinateurs interprètent les données d'une `String`.
 
 <!--
 ### What Is a String?
@@ -61,9 +61,9 @@ Nous allons d'abord définir ce que nous entendons par le terme *chaîne de
 caractères*. Rust a un seul type de chaînes de caractères dans le noyau du
 langage, qui est la slice de chaîne de caractères `str` qui est habituellement
 utilisée sous sa forme empruntée, `&str`. Dans le chapitre 4, nous avons abordé
-les *slices de chaîne de caractères*, qui sont des références à une partie des
-données d'une chaîne de caractères encodée en UTF-8 qui sont stockés autre part.
-Les chaînes de caractères pures, par exemple, sont stockées dans le binaire du
+les *slices de chaîne de caractères*, qui sont des références à des données
+d'une chaîne de caractères encodée en UTF-8 qui sont stockées autre part. Les
+littéraux de chaînes de caractères, par exemple, sont stockés dans le binaire du
 programme et sont des slices de chaînes de caractères.
 
 <!--
@@ -98,12 +98,12 @@ API documentation for more about how to use them and when each is appropriate.
 La bibliothèque standard de Rust apporte aussi un certain nombre d'autres types
 de chaînes de caractères, comme `OsString`, `OsStr`, `CString`, et `CStr`. Les
 crates de bibliothèque peuvent fournir encore plus de solutions pour stocker des
-chaînes de caractères. Avez vous remarqué que ces noms finissent tous par
+chaînes de caractères. Avez-vous remarqué que ces noms finissent tous par
 `String` ou `Str` ? Cela fait référence aux variantes possédées et empruntées,
-comme les types `String` et `str` que nous avons vu précédemment. Ces types de
+comme les types `String` et `str` que nous avons vus précédemment. Ces types de
 chaînes de caractères peuvent stocker leur texte dans de différents encodages,
 ou le stocker en mémoire de manière différente, par exemple. Nous n'allons pas
-traiter ces autres types de chaînes de caractères dans ce chapitre ;
+traiter de ces autres types de chaînes de caractères dans ce chapitre ;
 référez-vous à la documentation de leur API pour en savoir plus sur leur
 utilisation et leur utilité.
 
@@ -147,11 +147,11 @@ that implements the `Display` trait, as string literals do. Listing 8-12 shows
 two examples.
 -->
 
-Cette ligne créée une nouvelle `String` vide qui s'appelle `s`, dans laquelle
-nous pouvons ensuite y charger des données. Parfois, nous aurons quelques
-données initiales que nous voudrions ajouter dans la `String`. Pour cela, nous
-utilisons la méthode `to_string`, qui est disponible sur tous les types qui
-implémentent le trait `Display`, comme le font les chaînes de caractères pures.
+Cette ligne crée une nouvelle `String` vide qui s'appelle `s`, dans laquelle
+nous pouvons ensuite charger des données. Souvent, nous aurons quelques données
+initiales que nous voudrions ajouter dans la `String`. Pour cela, nous utilisons
+la méthode `to_string`, qui est disponible sur tous les types qui implémentent
+le trait `Display`, comme le font les littéraux de chaînes de caractères.
 L'encart 8-12 nous montre deux exemples.
 
 <!--
@@ -170,7 +170,7 @@ L'encart 8-12 nous montre deux exemples.
 -->
 
 <span class="caption">Encart 8-12 : Utilisation de la méthode `to_string` pour
-créer un `String` à partir d'une chaîne de caractères pure</span>
+créer une `String` à partir d'un littéral de chaîne</span>
 
 <!--
 This code creates a string containing `initial contents`.
@@ -185,8 +185,8 @@ that uses `to_string`.
 -->
 
 Nous pouvons aussi utiliser la fonction `String::from` pour créer une `String`
-à partir d'une chaîne de caractères pure. Le code dans l'encart 8-13 est
-équivalent au code dans l'encart 8-12 qui utilisait `to_string`.
+à partir d'un littéral de chaîne. Le code dans l'encart 8-13 est équivalent au
+code dans l'encart 8-12 qui utilisait `to_string`.
 
 <!--
 ```rust
@@ -204,7 +204,7 @@ a `String` from a string literal</span>
 -->
 
 <span class="caption">Encart 8-13 : Utilisation de la fonction `String::from`
-afin de créer une `String` à partir d'une chaîne de caractères pure</span>
+afin de créer une `String` à partir d'un littéral de chaîne</span>
 
 <!--
 Because strings are used for so many things, we can use many different generic
@@ -214,7 +214,7 @@ redundant, but they all have their place! In this case, `String::from` and
 -->
 
 Comme les chaînes de caractères sont utilisées pour de nombreuses choses, nous
-pouvons utiliser beaucoup d'APIs génériques pour les chaînes de caractères.
+pouvons utiliser beaucoup d'API génériques pour les chaînes de caractères.
 Certaines d'entre elles peuvent paraître redondantes, mais elles ont toutes
 leur place ! Dans notre cas, `String::from` et `to_string` font la même chose,
 donc votre choix est une question de goût.
@@ -243,8 +243,8 @@ l'encart 8-14.
 strings</span>
 -->
 
-<span class="caption">Encart 8-14 : Stockage de texte dans différents langages
-dans des chaînes de caractères</span>
+<span class="caption">Encart 8-14 : Stockage de salutations dans différentes
+langues dans des chaînes de caractères</span>
 
 <!--
 All of these are valid `String` values.
@@ -265,22 +265,22 @@ use the `+` operator or the `format!` macro to concatenate `String` values.
 -->
 
 Une `String` peut s'agrandir et son contenu peut changer, exactement comme le
-contenu d'un `Vec<T>`, si vous utilisez `push` pour y rajouter des données à
-l'intérieur. De plus, vous pouvez correctement utiliser l'opérateur `+` ou la
-macro `format!` pour concatener des valeurs `String`.
+contenu d'un `Vec<T>`, si on y ajoute des données. De plus, vous pouvez aisément
+utiliser l'opérateur `+` ou la macro `format!` pour concaténer des valeurs
+`String`.
 
 <!--
 #### Appending to a String with `push_str` and `push`
 -->
 
-#### Ajouter du texte à une chaîne avec `push_str` et `push`
+#### Ajouter du texte à une String avec `push_str` et `push`
 
 <!--
 We can grow a `String` by using the `push_str` method to append a string slice,
 as shown in Listing 8-15.
 -->
 
-Nous pouvons agrandir un `String` en utilisant la méthode `push_str` pour
+Nous pouvons agrandir une `String` en utilisant la méthode `push_str` pour
 ajouter une slice de chaîne de caractères, comme dans l'encart 8-15.
 
 <!--
@@ -299,7 +299,7 @@ using the `push_str` method</span>
 -->
 
 <span class="caption">Encart 8-15 : Ajout d'une slice de chaîne de caractères
-dans un `String` en utilisant la méthode `push_str`</span>
+dans une `String` en utilisant la méthode `push_str`</span>
 
 <!--
 After these two lines, `s` will contain `foobar`. The `push_str` method takes a
@@ -308,11 +308,11 @@ parameter. For example, the code in Listing 8-16 shows that it would be
 unfortunate if we weren’t able to use `s2` after appending its contents to `s1`.
 -->
 
-A l'issue de ces deux lignes, `s` va contenir `foobar`. La méthode `push_str`
+À l'issue de ces deux lignes, `s` va contenir `foobar`. La méthode `push_str`
 prend une slice de chaîne de caractères car nous ne souhaitons pas forcément
 prendre possession du paramètre. Par exemple, le code de l'encart 8-16 nous
-montre une situation où il serait regrettable si nous ne pouvions plus utiliser
-`s2` après avoir ajouté son contenu dans `s1`.
+montre une situation où il serait regrettable de ne plus pouvoir utiliser `s2`
+après avoir ajouté son contenu dans `s1`.
 
 <!--
 ```rust
@@ -347,9 +347,9 @@ The `push` method takes a single character as a parameter and adds it to the
 the `push` method.
 -->
 
-La méthode `push` prend un seul caractère en paramètre et l'ajoute au `String`.
-L'encart 8-17 nous montre du code qui ajoute la lettre "l" au `String` en
-utilisant la méthode `push`.
+La méthode `push` prend un seul caractère en paramètre et l'ajoute à la
+`String`. L'encart 8-17 nous montre du code qui ajoute la lettre "l" à une
+`String` en utilisant la méthode `push`.
 
 <!--
 ```rust
@@ -386,7 +386,7 @@ Often, you’ll want to combine two existing strings. One way is to use the `+`
 operator, as shown in Listing 8-18.
 -->
 
-Parfois, vous aurez besoin de combiner deux chaînes de caractères existantes.
+Souvent, vous aurez besoin de combiner deux chaînes de caractères existantes.
 Une façon de faire cela est d'utiliser l'opérateur `+`, comme dans l'encart
 8-18.
 
@@ -459,11 +459,12 @@ the second parameter to `add`. So why does Listing 8-18 compile?
 -->
 
 Premièrement, `s2` a un `&`, ce qui veut dire que nous ajoutons une *référence*
-vers la seconde chaîne de caractères en raison du paramètre `s` dans la fonction
-`add` : nous pouvons seulement ajouter une `&str` à une `String` ; nous ne
-pouvons pas ajouter deux valeurs de type `String` ensemble. Mais attendez — le
-type de `&s2` est `&String`, et non pas `&str`, comme c'est écrit dans le second
-paramètre de `add`. Donc pourquoi est-ce que le code l'encart 8-18 se compile ?
+vers la seconde chaîne de caractères à la première chaîne en raison du paramètre
+`s` de la fonction `add` : nous pouvons seulement ajouter un `&str` à une
+`String` ; nous ne pouvons pas ajouter deux valeurs de type `String` ensemble.
+Mais attendez — le type de `&s2` est `&String`, et non pas `&str`, comme c'est
+écrit dans le second paramètre de `add`. Alors pourquoi est-ce que le code de
+l'encart 8-18 se compile ?
 
 <!--
 The reason we’re able to use `&s2` in the call to `add` is that the compiler
