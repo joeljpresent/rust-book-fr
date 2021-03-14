@@ -714,7 +714,7 @@ second est `151`, donc en vérité `reponse` vaudrait `208`, mais `208` n'est pa
 un caractère valide à lui seul. Retourner `208` n'est pas ce qu'un utilisateur
 attend s'il demande la première lettre de cette chaîne de caractères ;
 cependant, c'est la seule valeur que Rust a à l'indice 0 des octets. Les
-utilisateurs ne souhaitent généralement pas obtenir la valeur de l'octet, même
+utilisateurs ne souhaitent généralement pas obtenir la valeur d'un octet, même
 si la chaîne de caractères contient uniquement des lettres latines : si
 `&"hello"[0]` était un code valide qui retournerait la valeur de l'octet, il
 retournerait `104` et non pas `h`. Pour éviter de retourner une valeur
