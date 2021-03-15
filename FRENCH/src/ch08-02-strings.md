@@ -446,7 +446,7 @@ Ce n'est pas exactement la même signature que celle de la bibliothèque
 standard : dans la bibliothèque standard, `add` est défini avec des types
 génériques. Ici, nous voyons la signature de `add` avec des types concrets à la
 place des génériques, ce qui se passe lorsque nous utilisons cette méthode avec
-des valeurs de type `String`. Nous verrons les génériques au chapitre 10. Cette
+des valeurs de type `String`. Nous verrons la généricité au chapitre 10. Cette
 signature nous donne les éléments dont nous avons besoin pour comprendre les
 subtilités de l'opérateur `+`.
 
@@ -527,9 +527,9 @@ characters, it’s difficult to see what’s going on. For more complicated stri
 combining, we can use the `format!` macro:
 -->
 
-Au final, `s` vaudra `tic-tac-toe`. Avec tous les caractères `+`et `"`, il est
+Au final, `s` vaudra `tic-tac-toe`. Avec tous les caractères `+` et `"`, il est
 difficile de visualiser ce qui se passe. Pour une combinaison de chaînes de
-caractères plus complexes, nous pouvons utiliser la macro `format!` :
+caractères plus complexe, nous pouvons utiliser la macro `format!` :
 
 <!--
 ```rust
@@ -716,10 +716,10 @@ attend s'il demande la première lettre de cette chaîne de caractères ;
 cependant, c'est la seule valeur que Rust a à l'indice 0 des octets. Les
 utilisateurs ne souhaitent généralement pas obtenir la valeur d'un octet, même
 si la chaîne de caractères contient uniquement des lettres latines : si
-`&"hello"[0]` était un code valide qui retournerait la valeur de l'octet, il
+`&"hello"[0]` était un code valide qui retournait la valeur de l'octet, il
 retournerait `104` et non pas `h`. Pour éviter de retourner une valeur
 inattendue et générer des bogues qui ne seraient pas découverts immédiatement,
-Rust ne va pas compiler ce code et ainsi éviter des erreurs dès le début du
+Rust ne va pas compiler ce code et va ainsi éviter des erreurs dès le début du
 processus de développement.
 
 <!--
@@ -875,7 +875,7 @@ Earlier, we mentioned that each of these characters was 2 bytes, which means
 
 Ici, `s` sera un `&str` qui contiendra les 4 premiers octets de la chaîne de
 caractères. Précédemment, nous avions mentionné que chacun de ces caractères
-étaient encodés sur 2 octets, ce qui veut dire que `s` vaudra `Зд`.
+était encodé sur 2 octets, ce qui veut dire que `s` vaudra `Зд`.
 
 <!--
 What would happen if we used `&hello[0..1]`? The answer: Rust would panic at
@@ -1029,7 +1029,7 @@ provided by the standard library. Crates are available on
 [crates.io](https://crates.io/) if this is the functionality you need.
 -->
 
-L'obtention des groupes de graphèmes à partir de chaines de caractères est
+L'obtention des groupes de graphèmes à partir de chaînes de caractères est
 complexe, donc cette fonctionnalité n'est pas fournie par la bibliothèque
 standard. Des crates sont disponibles sur [crates.io](https://crates.io/) si
 c'est la fonctionnalité dont vous avez besoin.
