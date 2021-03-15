@@ -273,7 +273,7 @@ utiliser l'opérateur `+` ou la macro `format!` pour concaténer des valeurs
 #### Appending to a String with `push_str` and `push`
 -->
 
-#### Ajouter du texte à une String avec `push_str` et `push`
+#### Ajouter du texte à une chaîne avec `push_str` et `push`
 
 <!--
 We can grow a `String` by using the `push_str` method to append a string slice,
