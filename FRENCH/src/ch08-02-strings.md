@@ -726,7 +726,7 @@ processus de développement.
 #### Bytes and Scalar Values and Grapheme Clusters! Oh My!
 -->
 
-#### Des octets, des valeurs scalaires et des groupes de graphèmes !? Oh mon Dieu !
+#### Des octets, des valeurs scalaires et des groupes de graphèmes !? Oh mon Dieu !
 
 <!--
 Another point about UTF-8 is that there are actually three relevant ways to
@@ -1065,4 +1065,4 @@ erreurs à cause de caractères non ASCII.
 Let’s switch to something a bit less complex: hash maps!
 -->
 
-Passons maintenant à quelque chose de moins complexe : les tables de hachage !
+Passons maintenant à quelque chose de moins complexe : les tables de hachage !
