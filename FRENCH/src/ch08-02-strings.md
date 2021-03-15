@@ -37,7 +37,7 @@ car les chaînes de caractères sont en réalité des suites d'octets, avec quel
 méthodes supplémentaires qui sont utiles lorsque ces octets sont considérés
 comme du texte. Dans cette section, nous allons voir les points communs entre le
 fonctionnement des `String` et celui des autres collections, comme la création,
-la modification, et la lecture. Nous verrons les raisons pour lesquelles les
+la modification et la lecture. Nous verrons les raisons pour lesquelles les
 `String` sont différentes des autres collections, en particulier pourquoi
 l'indexation d'une `String` est compliquée à cause des différences entre la
 façon dont les gens et les ordinateurs interprètent les données d'une `String`.
@@ -528,7 +528,7 @@ combining, we can use the `format!` macro:
 -->
 
 Au final, `s` vaudra `tic-tac-toe`. Avec tous les caractères `+`et `"`, il est
-difficile de visualiser ce qu'il se passe. Pour une combinaison de chaînes de
+difficile de visualiser ce qui se passe. Pour une combinaison de chaînes de
 caractères plus complexes, nous pouvons utiliser la macro `format!` :
 
 <!--
@@ -882,9 +882,9 @@ What would happen if we used `&hello[0..1]`? The answer: Rust would panic at
 runtime in the same way as if an invalid index were accessed in a vector:
 -->
 
-Que se se passerait-il si nous utilisions `&bonjour[0..1]` ? Réponse : Rust
-aurait paniqué au moment de l'exécution de la même façon que si nous utilisions
-un indice invalide pour accéder à un élément d'un vecteur :
+Que se passerait-il si nous utilisions `&bonjour[0..1]` ? Réponse : Rust aurait
+paniqué au moment de l'exécution de la même façon que si nous utilisions un
+indice invalide pour accéder à un élément d'un vecteur :
 
 <!--
 ```console
@@ -924,7 +924,7 @@ out and returns six values of type `char`, and you can iterate over the result
 to access each element:
 -->
 
-Si vous avez besoin de faire des opérations sur les valeurs scalaires Unicodes
+Si vous avez besoin de faire des opérations sur les valeurs scalaires Unicode
 une par une, la meilleure façon de procéder est d'utiliser la méthode `chars`.
 Appeler `chars` sur “नमस्ते” sépare et retourne six valeurs de type `char`, et
 vous pouvez itérer sur le résultat pour accéder à chaque élément :
