@@ -97,7 +97,7 @@ collections de la bibliothèque standard. De nos trois collections courantes,
 cette dernière est la moins utilisée, donc elle n'est pas présente dans les
 fonctionnalités importées automatiquement dans la portée par l'étape
 préliminaire. Les tables de hachages sont aussi moins gérées par la bibliothèque
-standard ; il n'y a pas de macro intégrée pour les construire, par exemple.
+standard ; il n'y a pas de macro intégrée pour les construire, par exemple.
 
 <!--
 Just like vectors, hash maps store their data on the heap. This `HashMap` has
