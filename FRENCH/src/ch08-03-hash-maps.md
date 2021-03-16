@@ -18,8 +18,8 @@ map)*. Le type `HashMap<K, V>` stocke une association de clés de type `K` à de
 valeurs de type `V`. Elle fait cela via une *fonction de hachage*, qui détermine
 comment elle va ranger ces clés et valeurs dans la mémoire. De nombreux langages
 de programmation prennent en charge ce genre de structure de donnée, mais elles
-ont souvent un nom différent, comme hash, map, object, hash table, dictionary,
-ou associative array, pour n'en nommer que quelques-uns.
+ont souvent un nom différent, comme hash, map, objet, table d'association,
+dictionnaire ou tableau associatif, pour n'en nommer que quelques-uns.
 
 <!--
 Hash maps are useful when you want to look up data not by using an index, as
@@ -214,8 +214,7 @@ they’ve been moved into the hash map with the call to `insert`.
 -->
 
 Nous ne pouvons plus utiliser les variables `nom_champ` et `valeur_champ` après
-qu'elles aient été déplacées dans la table de hachage lors de l'appel à
-`insert`.
+qu'elles ont été déplacées dans la table de hachage lors de l'appel à `insert`.
 
 <!--
 If we insert references to values into the hash map, the values won’t be moved
