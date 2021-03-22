@@ -151,7 +151,7 @@ and a list of scores</span>
 -->
 
 <span class="caption">Encart 8-21 : création d'une table de hachage à partir
-d'une liste d'équipes et une liste de scores</span>
+d'une liste d'équipes et d'une liste de scores</span>
 
 <!--
 The type annotation `HashMap<_, _>` is needed here because it’s possible to
