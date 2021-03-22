@@ -17,7 +17,7 @@ La dernière des collections les plus courantes est la *table de hachage (hash
 map)*. Le type `HashMap<K, V>` stocke une association de clés de type `K` à des
 valeurs de type `V`. Elle fait cela via une *fonction de hachage*, qui détermine
 comment elle va ranger ces clés et valeurs dans la mémoire. De nombreux langages
-de programmation prennent en charge ce genre de structure de donnée, mais elles
+de programmation prennent en charge ce genre de structure de données, mais elles
 ont souvent un nom différent, tel que hash, map, objet, table d'association,
 dictionnaire ou tableau associatif, pour n'en nommer que quelques-uns.
 
@@ -594,7 +594,7 @@ devriez maintenant être en mesure de résoudre :
   valeur qui apparaît le plus souvent ; une table de hachage sera utile dans ce
   cas) de la liste.
 * Convertir des chaînes de caractères dans une variante du louchébem.
-  La consonne intiale de chaque mot est remplacée par la lettre `l` et est
+  La consonne initiale de chaque mot est remplacée par la lettre `l` et est
   rétablie à la fin du mot suivie du suffixe argotique “em” ; ainsi, “bonjour”
   devient “*l*onjour*bem*”. Si le mot commence par une voyelle, ajouter un `l`
   au début du mot et ajouter à la fin le suffixe “muche”. Et gardez en tête les
