@@ -53,7 +53,7 @@ erreur.
 > sections `[profile]` correspondantes dans votre fichier *Cargo.toml*. Par
 > exemple, si vous souhaitez abandonner lors d'un panic en mode release, ajoutez
 > ceci :
-> 
+>
 > ```toml
 > [profile.release]
 > panic = 'abort'
@@ -170,7 +170,7 @@ d'accéder à un élément d'un vecteur via son indice :
 end of a vector, which will cause a call to `panic!`</span>
 -->
 
-<span class="caption">Encart 9-1 : tentative d'accès à un élément qui dépasse de
+<span class="caption">Encart 9-1 : tentative d'accès à un élément qui dépasse de
 l'intervalle d'un vecteur, ce qui provoque un `panic!`</span>
 
 <!--
@@ -342,7 +342,7 @@ default when using `cargo build` or `cargo run` without the `--release` flag,
 as we have here.
 -->
 
-Cela fait beaucoup de contenu ! Ce que vous voyez sur votre machine
+Cela fait beaucoup de contenu ! Ce que vous voyez sur votre machine
 peut être différent en fonction de votre système d'exploitation et de votre
 version de Rust. Pour avoir le re-traçage avec ces informations, les instructions
 de déboguage doivent être activées. Les instructions de déboguage sont activées

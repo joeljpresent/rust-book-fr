@@ -22,7 +22,7 @@
     - [Les structures de contrôle](ch03-05-control-flow.md)
 
 - [Comprendre la possession](ch04-00-understanding-ownership.md)
-    - [Qu'est-ce que la possession ?](ch04-01-what-is-ownership.md)
+    - [Qu'est-ce que la possession ?](ch04-01-what-is-ownership.md)
     - [Les références et l'emprunt](ch04-02-references-and-borrowing.md)
     - [Le type slice](ch04-03-slices.md)
 
