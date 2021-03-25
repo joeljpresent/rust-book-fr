@@ -201,7 +201,7 @@ En C, tenter de lire en dehors de la fin d'une structure de donnée suit un
 comportement non défini. Vous pourriez récupérer quelque chose à l'emplacement
 mémoire demandé qui pourrait correspondre à l'élément demandé de la structure
 de données, même si cette partie de la mémoire n'appartient pas à cette
-structure de données. C'est ce qu'on appelle une *sur-lecture de tampon* et cela
+structure de données. C'est ce qu'on appelle une *lecture hors limites de tampon* et cela
 peut mener à une faille de sécurité si un attaquant a la possibilité de contrôler
 l'indice de telle manière qu'il puisse lire les données qui ne devraient pas
 être lisibles en dehors de la structure de données.
