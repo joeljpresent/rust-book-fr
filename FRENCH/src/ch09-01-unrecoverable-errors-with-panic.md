@@ -127,15 +127,15 @@ cas, l'appel de `panic!` pourrait se produire dans du code que notre
 code utilise. Le nom du fichier et la ligne indiquée par le message d'erreur
 sera alors du code de quelqu'un d'autre où la macro `panic!` est appelée, et non
 pas la ligne de notre code qui nous a mené à cet appel de `panic!`. Nous pouvons
-utiliser le re-traçage des fonctions qui appellent le `panic!` pour comprendre
+utiliser le retraçage des fonctions qui appellent le `panic!` pour comprendre
 la partie de notre code qui pose problème. Nous allons maintenant parler plus
-en détail de ce qu'est le re-traçage.
+en détail de ce qu'est le retraçage.
 
 <!--
 ### Using a `panic!` Backtrace
 -->
 
-### Utiliser le re-traçage de `panic!`
+### Utiliser le retraçage de `panic!`
 
 <!--
 Let’s look at another example to see what it’s like when a `panic!` call comes
@@ -254,17 +254,17 @@ Listing 9-2 shows output similar to what you’ll see.
 -->
 
 La ligne suivante nous informe que nous pouvons régler la variable
-d'environnement `RUST_BACKTRACE` pour obtenir le re-traçage de ce qui s'est
-exactement passé pour mener à cette erreur. Un *re-traçage* consiste à lister
+d'environnement `RUST_BACKTRACE` pour obtenir le retraçage de ce qui s'est
+exactement passé pour mener à cette erreur. Un *retraçage* consiste à lister
 toutes les fonctions qui ont été appelées pour arriver jusqu'à ce point. Avec
-Rust, le re-traçage fonctionne comme il le fait dans d'autres langages : le
-secret pour lire le re-traçage est de commencer d'en haut et lire jusqu'à ce
+Rust, le retraçage fonctionne comme il le fait dans d'autres langages : le
+secret pour lire le retraçage est de commencer d'en haut et lire jusqu'à ce
 que vous voyiez les fichiers que vous avez écris. C'est l'endroit où s'est
 produit le problème. Les lignes avant celle qui mentionne vos fichiers
 représentent le code qu'à appelé votre code ; les lignes qui suivent
 représentent le code qui a appelé votre code. Ces lignes peuvent être du code
 du coeur de Rust, du code de la bibliothèque standard, ou des crates que vous
-utilisez. Essayons d'obtenir un re-traçage en réglant la variable
+utilisez. Essayons d'obtenir un retraçage en réglant la variable
 d'environnement `RUST_BACKTRACE` à n'importe quelle valeur autre que 0. L'encart
 9-2 nous montre un retour similaire à ce que vous devriez voir :
 
@@ -330,7 +330,7 @@ note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose bac
 `panic!` displayed when the environment variable `RUST_BACKTRACE` is set</span>
 -->
 
-<span class="caption">Encart 9-2: le re-traçage généré par l'appel de `panic!`
+<span class="caption">Encart 9-2: le retraçage généré par l'appel de `panic!`
 est affiché quand la variable d'environnement `RUST_BACKTRACE` est définie
 </span>
 
@@ -344,7 +344,7 @@ as we have here.
 
 Cela fait beaucoup de contenu ! Ce que vous voyez sur votre machine
 peut être différent en fonction de votre système d'exploitation et de votre
-version de Rust. Pour avoir le re-traçage avec ces informations, les instructions
+version de Rust. Pour avoir le retraçage avec ces informations, les instructions
 de déboguage doivent être activées. Les instructions de déboguage sont activées
 par défaut quand on utilise `cargo build` ou `cargo run` sans le drapeau
 `--release`, comme c'est le cas ici.
@@ -361,12 +361,12 @@ you’ll need to figure out what action the code is taking with what values to
 cause the panic and what the code should do instead.
 -->
 
-Dans l'encart 9-2, la ligne 6 du re-traçage nous montre la ligne de notre projet
+Dans l'encart 9-2, la ligne 6 du retraçage nous montre la ligne de notre projet
 qui provoque le problème : la ligne 4 de *src/main.rs*. Si nous ne voulons pas
 que notre programme panique, le premier endroit que nous devrions inspecter est
 l'emplacement cité par la première ligne qui mentionne du code que nous avons
 écrit. Dans l'encart 9-1, où nous avons délibérément écrit du code qui panique
-dans le but de montrer comment utiliser le re-traçage, la solution pour ne pas
+dans le but de montrer comment utiliser le retraçage, la solution pour ne pas
 paniquer est de ne pas demander l'élément à l'indice 99 à un vecteur lorsqu'il
 n'en contient que 3. A l'avenir quand votre code paniquera, vous aurez besoin de
 prendre des dispositions dans votre code pour les valeurs qui font paniquer et
