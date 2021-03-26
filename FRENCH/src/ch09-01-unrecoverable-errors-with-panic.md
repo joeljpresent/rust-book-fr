@@ -41,10 +41,10 @@ erreur.
 
 > ### Dérouler la pile ou abandonner suite à un `panic!`
 >
-> Par défaut, quand un `panic` se produit, le programme commence par
-> *dérouler*, ce qui veut dire que Rust retourne en arrière dans la pile et
-> nettoie les données de chaque fonction qu'il rencontre sur son passage. Mais
-> cette marche arrière et le nettoyage demande beaucoup de travail. Une
+> Par défaut, quand un `panic` se produit, le programme se met à *dérouler*, ce
+> qui veut dire que Rust retourne en arrière dans la pile et nettoie les données
+> de chaque fonction qu'il rencontre sur son passage. Mais cette marche arrière
+> et le nettoyage demandent beaucoup de travail. Une
 > alternative est *d'abandonner* immédiatement, ce qui arrête le programme sans
 > nettoyage. La mémoire qu'utilisait le programme va devoir ensuite être
 > nettoyée par le système d'exploitation. Si dans votre projet vous avez besoin
