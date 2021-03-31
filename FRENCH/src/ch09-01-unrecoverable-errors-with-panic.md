@@ -41,18 +41,17 @@ erreur.
 
 > ### Dérouler la pile ou abandonner suite à un `panic!`
 >
-> Par défaut, quand un `panic` se produit, le programme se met à *dérouler*, ce
+> Par défaut, quand un *panic* se produit, le programme se met à *dérouler*, ce
 > qui veut dire que Rust retourne en arrière dans la pile et nettoie les données
 > de chaque fonction qu'il rencontre sur son passage. Mais cette marche arrière
-> et le nettoyage demandent beaucoup de travail. Une
-> alternative est *d'abandonner* immédiatement, ce qui arrête le programme sans
-> nettoyage. La mémoire qu'utilisait le programme va devoir ensuite être
-> nettoyée par le système d'exploitation. Si dans votre projet vous avez besoin
-> de construire un exécutable le plus petit possible, vous pouvez changer du
-> dévidage à l'abandon lors d'un panic en ajoutant `panic = 'abort'` aux
-> sections `[profile]` correspondantes dans votre fichier *Cargo.toml*. Par
-> exemple, si vous souhaitez abandonner lors d'un panic en mode release, ajoutez
-> ceci :
+> et le nettoyage demandent beaucoup de travail. Une alternative est
+> *d'abandonner* immédiatement, ce qui arrête le programme sans nettoyage. La
+> mémoire qu'utilisait le programme devra ensuite être nettoyée par le système
+> d'exploitation. Si dans votre projet vous avez besoin de construire un
+> exécutable le plus petit possible, vous pouvez passer du déroulage à l'abandon
+> lors d'un panic en ajoutant `panic = 'abort'` aux sections `[profile]`
+> appropriées dans votre fichier *Cargo.toml*. Par exemple, si vous souhaitez
+> abandonner lors d'un panic en mode publication *(release)*, ajoutez ceci :
 >
 > ```toml
 > [profile.release]
