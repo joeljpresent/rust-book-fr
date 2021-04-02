@@ -103,10 +103,10 @@ the panic occurred: *src/main.rs:2:5* indicates that it’s the second line,
 fifth character of our *src/main.rs* file.
 -->
 
-L'utilisation de `panic!` déclenche le message d'erreur présent dans les deux
-dernières lignes. La première ligne affiche notre message associé au panic et
+L'appel à `panic!` déclenche le message d'erreur présent dans les deux dernières
+lignes. La première ligne affiche notre message associé au panic et
 l'emplacement dans notre code source où se produit le panic : *src/main.rs:2:5*
-indique que c'est la seconde ligne et cinquième caractère de notre fichier
+indique que c'est à la seconde ligne et au cinquième caractère de notre fichier
 *src/main.rs*.
 
 <!--
@@ -122,13 +122,13 @@ backtrace is in more detail next.
 
 Dans cet exemple, la ligne indiquée fait partie de notre code, et si nous
 allons voir cette ligne, nous verrons l'appel à la macro `panic!`. Dans d'autres
-cas, l'appel de `panic!` pourrait se produire dans du code que notre
-code utilise. Le nom du fichier et la ligne indiquée par le message d'erreur
-sera alors du code de quelqu'un d'autre où la macro `panic!` est appelée, et non
+cas, l'appel de `panic!` pourrait se produire dans du code que notre code
+utilise. Le nom du fichier et la ligne indiquée par le message d'erreur seront
+alors ceux du code de quelqu'un d'autre où la macro `panic!` est appelée, et non
 pas la ligne de notre code qui nous a mené à cet appel de `panic!`. Nous pouvons
-utiliser le retraçage des fonctions qui appellent le `panic!` pour comprendre
-la partie de notre code qui pose problème. Nous allons maintenant parler plus
-en détail de ce qu'est le retraçage.
+utiliser le retraçage des fonctions qui ont appelé `panic!` pour repérer la
+partie de notre code qui pose problème. Nous allons maintenant parler plus en
+détail de ce qu'est le retraçage.
 
 <!--
 ### Using a `panic!` Backtrace
@@ -143,8 +143,8 @@ the macro directly. Listing 9-1 has some code that attempts to access an
 element by index in a vector.
 -->
 
-Analysons un autre exemple pour voir ce qui se passe lors d'un appel de
-`panic!` qui se produit dans une bibliothèque à cause d'un bug dans notre code plutôt
+Analysons un autre exemple pour voir ce qui se passe lors d'un appel de `panic!`
+qui se produit dans une bibliothèque à cause d'un bug dans notre code plutôt
 qu'un appel à la macro directement. L'encart 9-1 montre du code qui essaye
 d'accéder à un élément d'un vecteur via son indice :
 
