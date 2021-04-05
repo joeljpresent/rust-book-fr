@@ -399,8 +399,9 @@ list of all operators that Rust provides.
 -->
 
 Chaque expression de ces instructions utilise un opérateur mathématique et
-calcule une valeur unique, qui est ensuite attribuée à une variable. [L'annexe B][appendix_b]<!-- ignore --> 
-présente une liste de tous les opérateurs que Rust fournit.
+calcule une valeur unique, qui est ensuite attribuée à une variable.
+[L'annexe B][appendix_b]<!-- ignore --> présente une liste de tous les
+opérateurs que Rust fournit.
 
 <!--
 #### The Boolean Type
