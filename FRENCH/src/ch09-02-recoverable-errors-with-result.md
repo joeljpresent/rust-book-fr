@@ -530,7 +530,7 @@ thread 'main' panicked at 'Failed to open hello.txt: Error { repr: Os { code:
 -->
 
 ```text
-thread 'main' panicked at 'Echec à l'ouverture de hello.txt: Error { repr: Os {
+thread 'main' panicked at 'Échec à l'ouverture de hello.txt: Error { repr: Os {
 code: 2, message: "No such file or directory" } }', src/libcore/result.rs:906:4
 ```
 
@@ -542,7 +542,7 @@ figure out exactly which `unwrap` is causing the panic because all `unwrap`
 calls that panic print the same message.
 -->
 
-Comme ce message d'erreur commence par le texte que nous avons précisé, `Echec à
+Comme ce message d'erreur commence par le texte que nous avons précisé, `Échec à
 l'ouverture de hello.txt`, ce sera plus facile de trouver où se situe ce message
 d'erreur dans le code. Si nous utilisons `unwrap` à plusieurs endroits, cela
 peut prendre plus de temps de comprendre exactement quel `unwrap` a causé la
