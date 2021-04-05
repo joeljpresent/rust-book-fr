@@ -144,7 +144,7 @@ element by index in a vector.
 -->
 
 Analysons un autre exemple pour voir ce qui se passe lors d'un appel de `panic!`
-qui se produit dans une bibliothèque à cause d'un bug dans notre code plutôt
+qui se produit dans une bibliothèque à cause d'un bogue dans notre code plutôt
 qu'un appel à la macro directement. L'encart 9-1 montre du code qui essaye
 d'accéder à un élément d'un vecteur via son indice :
 
