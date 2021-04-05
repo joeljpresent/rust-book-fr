@@ -344,8 +344,8 @@ as we have here.
 
 Cela fait beaucoup de contenu ! Ce que vous voyez sur votre machine peut être
 différent en fonction de votre système d'exploitation et de votre version de
-Rust. Pour avoir le retraçage avec ces informations, les symboles de déboguage
-doivent être activés. Les symboles de déboguage sont activés par défaut quand on
+Rust. Pour avoir le retraçage avec ces informations, les symboles de débogage
+doivent être activés. Les symboles de débogage sont activés par défaut quand on
 utilise `cargo build` ou `cargo run` sans le drapeau `--release`, comme c'est le
 cas ici.
 
