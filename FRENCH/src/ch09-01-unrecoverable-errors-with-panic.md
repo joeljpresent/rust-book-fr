@@ -200,10 +200,10 @@ En C, tenter de lire au-delà de la fin d'une structure de donnée suit un
 comportement indéfini. Vous pourriez récupérer la valeur à l'emplacement mémoire
 qui correspondrait à l'élément demandé de la structure de données, même si cette
 partie de la mémoire n'appartient pas à cette structure de données. C'est ce
-qu'on appelle une *lecture hors limites de tampon* et cela peut mener à des
-failles de sécurité si un attaquant a la possibilité de contrôler l'indice de
-telle manière qu'il puisse lire les données qui ne devraient pas être lisibles
-en dehors de la structure de données.
+qu'on appelle une *lecture hors limites* et cela peut mener à des failles de
+sécurité si un attaquant a la possibilité de contrôler l'indice de telle manière
+qu'il puisse lire les données qui ne devraient pas être lisibles en dehors de la
+structure de données.
 
 <!--
 To protect your program from this sort of vulnerability, if you try to read an
