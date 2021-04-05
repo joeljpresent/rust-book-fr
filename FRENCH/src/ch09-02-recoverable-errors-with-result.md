@@ -14,10 +14,10 @@ file instead of terminating the process.
 
 La plupart des erreurs ne sont pas assez graves au point d'arrêter complètement
 le programme. Parfois, lorsque une fonction échoue, c'est pour une raison que
-vous pouvez facilement comprendre et pour laquelle agir en conséquence. Par exemple, si vous
-essayez d'ouvrir un fichier et que l'opération échoue parce que le fichier
-n'existe pas, vous pourriez vouloir créer le fichier plutôt que d'arrêter le
-processus.
+vous pouvez facilement comprendre et pour laquelle agir en conséquence. Par
+exemple, si vous essayez d'ouvrir un fichier et que l'opération échoue parce que
+le fichier n'existe pas, vous pourriez vouloir créer le fichier plutôt que
+d'arrêter le processus.
 
 <!--
 Recall from [“Handling Potential Failure with the `Result`
@@ -25,10 +25,9 @@ Type”][handle_failure]<!-- ignore -- > in Chapter 2 that the `Result` enum is
 defined as having two variants, `Ok` and `Err`, as follows:
 -->
 
-Souvenez-vous de la section
-[“Gérer les erreurs potentielles avec le type `Result`”][handle_failure]<!-- ignore -->
-du chapitre 2 lorsque l'énumération `Result` pouvait avoir deux variantes, `Ok`
-et `Err`, comme ci-dessous :
+Souvenez-vous de la section [“Gérer les erreurs potentielles avec le type
+`Result`”][handle_failure]<!-- ignore --> du chapitre 2 lorsque l'énumération
+`Result` pouvait avoir deux variantes, `Ok` et `Err`, comme ci-dessous :
 
 <!--
 [handle_failure]: ch02-00-guessing-game-tutorial.html#handling-potential-failure-with-the-result-type
@@ -114,15 +113,15 @@ isn’t of type `u32`, so let’s change the `let f` statement to this:
 -->
 
 Comment savons-nous que `File::open` retourne un `Result` ? Nous pouvons
-regarder la
-[documentation de l'API de la bibliothèque standard](https://doc.rust-lang.org/std/index.html)<!-- ignore -->,
-ou nous pouvons demander au compilateur ! Si nous appliquons à `f` une
-annotation de type dont nous savons qu'elle n'est *pas* le type de retour de la
-fonction et que nous essayons ensuite de compiler le code, le compilateur va
-nous dire que les types ne correspondent pas. Le message d'erreur va ensuite
-nous dire *quel est le type* de `f`. Essayons cela ! Nous savons que le
-retour de `File::open` n'est pas du type `u32`, alors essayons de changer
-l'instruction `let f` par ceci :
+regarder la [documentation de l'API de la bibliothèque
+standard](https://doc.rust-lang.org/std/index.html)<!-- ignore -->, ou nous
+pouvons demander au compilateur ! Si nous appliquons à `f` une annotation de
+type dont nous savons qu'elle n'est *pas* le type de retour de la fonction et
+que nous essayons ensuite de compiler le code, le compilateur va nous dire que
+les types ne correspondent pas. Le message d'erreur va ensuite nous dire *quel
+est le type* de `f`. Essayons cela ! Nous savons que le retour de `File::open`
+n'est pas du type `u32`, alors essayons de changer l'instruction `let f` par
+ceci :
 
 <!--
 ```rust,ignore,does_not_compile
@@ -226,8 +225,8 @@ avons vu au chapitre 6.
 `Result` variants that might be returned</span>
 -->
 
-<span class="caption">Encart 9-4: utilisation de l'expression `match` pour
-gérer les variantes que `Result` pourrait retourner</span>
+<span class="caption">Encart 9-4: utilisation de l'expression `match` pour gérer
+les variantes que `Result` pourrait retourner</span>
 
 <!--
 Note that, like the `Option` enum, the `Result` enum and its variants have been
@@ -236,9 +235,9 @@ before the `Ok` and `Err` variants in the `match` arms.
 -->
 
 Remarquez que comme l'énumération `Option`, l'énumération `Result` et ses
-variantes ont été importés par l'étape préliminaire, donc vous n'avez pas
-besoin de préciser `Result::` devant les variantes `Ok` et `Err` dans les
-branches du `match`.
+variantes ont été importés par l'étape préliminaire, donc vous n'avez pas besoin
+de préciser `Result::` devant les variantes `Ok` et `Err` dans les branches du
+`match`.
 
 <!--
 Here we tell Rust that when the result is `Ok`, return the inner `file` value
@@ -299,8 +298,8 @@ at Listing 9-5, which adds an inner `match` expression.
 -->
 
 Le code dans l'encart 9-4 va faire un `panic!` peu importe la raison de l'échec
-de `File::open`. Ce que nous voudrions plutôt faire est de réagir différemment en
-fonction de différents cas d'erreurs : si `File::open` a échoué parce que le
+de `File::open`. Ce que nous voudrions plutôt faire est de réagir différemment
+en fonction de différents cas d'erreurs : si `File::open` a échoué parce que le
 fichier n'existe pas, nous voulons créer le fichier et renvoyer le manipulateur
 de fichier pour ce nouveau fichier. Si `File::open` échoue pour toute autre
 raison, par exemple si nous n'avons pas l'autorisation d'ouvrir le fichier,
@@ -387,8 +386,8 @@ more seasoned Rustacean might write this code instead of Listing 9-5:
 -->
 
 Cela commence à faire beaucoup de `match` ! L'expression `match` est très utile
-mais est aussi assez rudimentaire. Dans le chapitre 13, vous allez en apprendre plus
-sur les fermetures ; le type `Result<T, E>` a de nombreuses méthodes qui
+mais est aussi assez rudimentaire. Dans le chapitre 13, vous allez en apprendre
+plus sur les fermetures ; le type `Result<T, E>` a de nombreuses méthodes qui
 acceptent une fermeture et qui sont implémentés en utilisant des expressions
 `match`. L'utilisation de ces méthodes vont rendre votre code plus concis. Un
 Rustacé plus habitué écrira ce code plutôt que celui de l'encart 9-5 :
@@ -520,8 +519,8 @@ will be the parameter that we pass to `expect`, rather than the default
 Nous utilisons `expect` de la même manière que `unwrap` : pour retourner le
 manipulateur de fichier ou appeler la macro `panic!`. Le message d'erreur
 utilisé par `expect` lors de son appel au `panic!` sera le paramètre que nous
-avons passé à `expect`, plutôt que le message par défaut de `panic!`
-qu'utilise `unwrap`. Voici ce que cela donne :
+avons passé à `expect`, plutôt que le message par défaut de `panic!` qu'utilise
+`unwrap`. Voici ce que cela donne :
 
 <!--
 ```text
@@ -608,8 +607,8 @@ don't want to include it for rustdoc testing purposes. -- >
 calling code using `match`</span>
 -->
 
-<span class="caption">Encart 9-6 : une fonction qui retourne les erreurs au
-code qui l'appelle en utilisant `match`</span>
+<span class="caption">Encart 9-6 : une fonction qui retourne les erreurs au code
+qui l'appelle en utilisant `match`</span>
 
 <!--
 This function can be written in a much shorter way, but we’re going to start by
@@ -632,9 +631,9 @@ method.
 
 Cette fonction peut être écrite de façon plus concise, mais nous avons décidé de
 commencer par faire un maximum de choses manuellement pour découvrir la gestion
-d'erreurs ; mais à la fin, nous verrons comment raccourcir le code. Commençons par
-regarder le type de retour de la fonction : `Result<String, io::Error>`. Cela
-signifie que la fonction retourne une valeur de type `Result<T, E>` où le
+d'erreurs ; mais à la fin, nous verrons comment raccourcir le code. Commençons
+par regarder le type de retour de la fonction : `Result<String, io::Error>`.
+Cela signifie que la fonction retourne une valeur de type `Result<T, E>` où le
 paramètre générique `T` a été remplacé par le type `String` et le paramètre
 générique `E` a été remplacé par le type `io::Error`. Si cette fonction réussit
 avec succès, le code qui appelle cette fonction va obtenir une valeur `Ok` qui
