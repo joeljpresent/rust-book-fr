@@ -196,7 +196,7 @@ in such a way as to read data they shouldn’t be allowed to that is stored afte
 the data structure.
 -->
 
-En C, tenter de lire au-delà de la fin d'une structure de donnée suit un
+En C, tenter de lire au-delà de la fin d'une structure de données suit un
 comportement indéfini. Vous pourriez récupérer la valeur à l'emplacement mémoire
 qui correspondrait à l'élément demandé de la structure de données, même si cette
 partie de la mémoire n'appartient pas à cette structure de données. C'est ce
