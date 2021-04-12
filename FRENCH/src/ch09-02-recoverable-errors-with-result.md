@@ -14,7 +14,7 @@ file instead of terminating the process.
 
 La plupart des erreurs ne sont pas assez graves au point d'arrêter complètement
 le programme. Parfois, lorsque une fonction échoue, c'est pour une raison que
-vous pouvez facilement comprendre et pour laquelle agir en conséquence. Par
+vous pouvez facilement comprendre et [vous pouvez agir] en conséquence. Par
 exemple, si vous essayez d'ouvrir un fichier et que l'opération échoue parce que
 le fichier n'existe pas, vous pourriez vouloir créer le fichier plutôt que
 d'arrêter le processus.
@@ -26,8 +26,8 @@ defined as having two variants, `Ok` and `Err`, as follows:
 -->
 
 Souvenez-vous de la section [“Gérer les erreurs potentielles avec le type
-`Result`”][handle_failure]<!-- ignore --> du chapitre 2 lorsque l'énumération
-`Result` pouvait avoir deux variantes, `Ok` et `Err`, comme ci-dessous :
+`Result`”][handle_failure]<!-- ignore --> du chapitre 2 que l'énumération
+`Result` avait deux variantes, `Ok` et `Err`, comme ci-dessous :
 
 <!--
 [handle_failure]: ch02-00-guessing-game-tutorial.html#handling-potential-failure-with-the-result-type
@@ -62,8 +62,8 @@ library has defined on it in many different situations where the successful
 value and error value we want to return may differ.
 -->
 
-Le `T` et `E` sont des paramètres de type génériques : nous allons parler plus
-en détail des génériques au chapitre 10. Tout ce que vous avez besoin de savoir
+Le `T` et le `E` sont des paramètres de type génériques : nous parlerons plus en
+détail de la généricité au chapitre 10. Tout ce que vous avez besoin de savoir
 pour le moment, c'est que `T` représente le type de valeur imbriquée dans la
 variante `Ok` qui sera retournée dans le cas d'un succès, et `E` représente le
 type d'erreur imbriquée dans la variante `Err` qui sera retournée dans le cas
