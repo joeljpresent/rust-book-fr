@@ -67,10 +67,10 @@ détail de la généricité au chapitre 10. Tout ce que vous avez besoin de savo
 pour le moment, c'est que `T` représente le type de valeur imbriquée dans la
 variante `Ok` qui sera retournée dans le cas d'un succès, et `E` représente le
 type d'erreur imbriquée dans la variante `Err` qui sera retournée dans le cas
-d'un échec. Comme `Result` a ces types de paramètres génériques, nous pouvons
-utiliser le type `Result` et les fonctions que la bibliothèque standard qui lui
-ont été associées pour différentes situations où la valeur de succès et la
-valeur d'erreur peuvent être différentes.
+d'un échec. Comme `Result` a ces paramètres de type génériques, nous pouvons
+utiliser le type `Result` et les fonctions que la bibliothèque standard lui ont
+associées dans différentes situations où la valeur de succès et la valeur
+d'erreur peuvent varier.
 
 <!--
 Let’s call a function that returns a `Result` value because the function could
@@ -113,7 +113,7 @@ isn’t of type `u32`, so let’s change the `let f` statement to this:
 -->
 
 Comment savons-nous que `File::open` retourne un `Result` ? Nous pouvons
-regarder la [documentation de l'API de la bibliothèque
+consulter la [documentation de l'API de la bibliothèque
 standard](https://doc.rust-lang.org/std/index.html)<!-- ignore -->, ou nous
 pouvons demander au compilateur ! Si nous appliquons à `f` une annotation de
 type dont nous savons qu'elle n'est *pas* le type de retour de la fonction et
