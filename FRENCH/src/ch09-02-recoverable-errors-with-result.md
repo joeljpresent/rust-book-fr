@@ -78,7 +78,7 @@ fail. In Listing 9-3 we try to open a file.
 -->
 
 Utilisons une fonction qui retourne une valeur de type `Result` car la fonction
-peut échouer. Dans l'encart 9-3 nous essayons d'ouvrir un fichier :
+peut échouer. Dans l'encart 9-3, nous essayons d'ouvrir un fichier :
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
@@ -119,9 +119,9 @@ pouvons demander au compilateur ! Si nous appliquons à `f` une annotation de
 type dont nous savons qu'elle n'est *pas* le type de retour de la fonction et
 que nous essayons ensuite de compiler le code, le compilateur va nous dire que
 les types ne correspondent pas. Le message d'erreur va ensuite nous dire *quel
-est le type* de `f`. Essayons cela ! Nous savons que le retour de `File::open`
-n'est pas du type `u32`, alors essayons de changer l'instruction `let f` par
-ceci :
+est le type* de `f`. Essayons cela ! Nous savons que le type de retour de
+`File::open` n'est pas `u32`, alors essayons de changer l'instruction `let f`
+par ceci :
 
 <!--
 ```rust,ignore,does_not_compile
@@ -137,7 +137,7 @@ ceci :
 Attempting to compile now gives us the following output:
 -->
 
-La compilation nous donne maintenant le résultat suivant :
+Tenter de compiler ce code nous donne maintenant le résultat suivant :
 
 <!--
 ```console
@@ -156,7 +156,7 @@ value, `std::fs::File`, which is a file handle. The type of `E` used in the
 error value is `std::io::Error`.
 -->
 
-Cela nous dit que le retour de la fonction `File::open` est du type
+Cela nous dit que le type de retour de la fonction `File::open` est de la forme
 `Result<T, E>`. Le paramètre générique `T` a été remplacé dans ce cas par le
 type en cas de succès, `std::fs::File`, qui permet d'interagir avec le fichier.
 Le `E` utilisé pour la valeur d'erreur est du type `std::io::Error`.
@@ -172,11 +172,11 @@ conveys.
 -->
 
 Ce type de retour veut dire que l'appel à `File::open` peut réussir et nous
-retourner un manipulateur de fichier qui peut nous permettre de le lire ou
-l'écrire. L'utilisation de cette fonction peut aussi échouer : par exemple, le
+retourner un manipulateur de fichier qui peut nous permettre de le lire ou d'y
+écrire. L'utilisation de cette fonction peut aussi échouer : par exemple, le
 fichier peut ne pas exister, ou nous n'avons pas le droit d'accéder au fichier.
 La fonction `File::open` doit avoir un moyen de nous dire si son utilisation a
-réussi ou échoué et en même temps nous fournir soit le manipulateur de fichier
+réussi ou échoué et en même temps nous fournir soit le manipulateur de fichier,
 soit des informations sur l'erreur. C'est exactement ces informations que
 l'énumération `Result` se charge de nous transmettre.
 
@@ -187,7 +187,7 @@ the value in `f` will be an instance of `Err` that contains more information
 about the kind of error that happened.
 -->
 
-Dans le cas où `File::open` réussit, la valeur que nous obtenons dans la
+Dans le cas où `File::open` réussit, la valeur que nous obtiendrons dans la
 variable `f` sera une instance de `Ok` qui contiendra un manipulateur de
 fichier. Dans le cas où cela échoue, la valeur dans `f` sera une instance de
 `Err` qui contiendra plus d'information sur le type d'erreur qui a eu lieu.
@@ -200,9 +200,9 @@ Chapter 6.
 -->
 
 Nous avons besoin d'ajouter différentes actions dans le code de l'encart 9-3 en
-fonction de la valeur que `File::open` a retourné. L'encart 9-4 montre une façon
-de gérer `Result` en utilisant un outil basique, l'expression `match` que nous
-avons vu au chapitre 6.
+fonction de la valeur que `File::open` retourne. L'encart 9-4 montre une façon
+de gérer le `Result` en utilisant un outil basique, l'expression `match` que
+nous avons vue au chapitre 6.
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
