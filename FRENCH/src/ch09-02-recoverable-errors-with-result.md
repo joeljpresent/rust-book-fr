@@ -225,8 +225,8 @@ nous avons vue au chapitre 6.
 `Result` variants that might be returned</span>
 -->
 
-<span class="caption">Encart 9-4: utilisation de l'expression `match` pour gérer
-les variantes que `Result` pourrait retourner</span>
+<span class="caption">Encart 9-4 : utilisation de l'expression `match` pour
+gérer les variantes de `Result` qui peuvent être retournées</span>
 
 <!--
 Note that, like the `Option` enum, the `Result` enum and its variants have been
@@ -234,10 +234,10 @@ brought into scope by the prelude, so we don’t need to specify `Result::`
 before the `Ok` and `Err` variants in the `match` arms.
 -->
 
-Remarquez que comme l'énumération `Option`, l'énumération `Result` et ses
-variantes ont été importés par l'étape préliminaire, donc vous n'avez pas besoin
-de préciser `Result::` devant les variantes `Ok` et `Err` dans les branches du
-`match`.
+Remarquez que, tout comme l'énumération `Option`, l'énumération `Result` et ses
+variantes ont été importées par l'étape préliminaire, donc vous n'avez pas
+besoin de préciser `Result::` devant les variantes `Ok` et `Err` dans les
+branches du `match`.
 
 <!--
 Here we tell Rust that when the result is `Ok`, return the inner `file` value
@@ -246,9 +246,9 @@ variable `f`. After the `match`, we can use the file handle for reading or
 writing.
 -->
 
-Ici nous indiquons à Rust que quand le résultat est `Ok`, il faut sortir la
-valeur `fichier` de la variante `Ok`, et nous assignons ensuite cette valeur à
-la variable `f`. Après le `match`, nous pourrons ensuite utiliser le
+Ici, nous indiquons à Rust que quand le résultat est `Ok`, il faut retourner la
+valeur `fichier` contenue dans la variante `Ok`, et nous assignons ensuite cette
+valeur à la variable `f`. Après le `match`, nous pourrons ensuite utiliser le
 manipulateur de fichier pour lire ou écrire.
 
 <!--
@@ -285,7 +285,7 @@ passé.
 ### Matching on Different Errors
 -->
 
-### Tester les différentes erreurs
+### Gérer les différentes erreurs
 
 <!--
 The code in Listing 9-4 will `panic!` no matter why `File::open` failed. What
@@ -304,8 +304,8 @@ fichier n'existe pas, nous voulons créer le fichier et renvoyer le manipulateur
 de fichier pour ce nouveau fichier. Si `File::open` échoue pour toute autre
 raison, par exemple si nous n'avons pas l'autorisation d'ouvrir le fichier,
 nous voulons quand même que le code lance un `panic!` de la même manière qu'il
-l'a fait dans l'encart 9-4. Dans l'encart 9-5, nous avons ajouté un nouveau cas
-au bloc `match` :
+l'a fait dans l'encart 9-4. Dans l'encart 9-5, nous avons ajouté une expression
+`match` imbriquée :
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
@@ -334,7 +334,7 @@ different ways</span>
 -->
 
 <span class="caption">Encart 9-5 : gestion des différents cas d'erreurs avec des
-actions différentes.</span>
+actions différentes</span>
 
 <!--
 The type of the value that `File::open` returns inside the `Err` variant is
