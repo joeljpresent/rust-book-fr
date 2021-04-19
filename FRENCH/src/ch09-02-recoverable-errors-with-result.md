@@ -349,14 +349,14 @@ also have an inner match on `error.kind()`.
 
 La valeur de retour de `File::open` logée dans la variante `Err` est de type
 `io::Error`, qui est une structure fournie par la bibliothèque standard. Cette
-structure a une méthode `kind` que nous pouvons utiliser pour obtenir un retour
+structure a une méthode `kind` que nous pouvons appeler pour obtenir une valeur
 de type `io::ErrorKind`. L'énumération `io::ErrorKind` est fournie elle aussi
-par la bibliothèque standard qui embarque des variantes qui représentent
-différents types d'erreurs qui pourraient résulter d'une opération provenant du
-module `io`. La variante que nous voulons utiliser est `ErrorKind::NotFound`,
-qui nous informe que le fichier que nous essayons d'ouvrir n'existe pas encore.
-Donc nous utilisons `match` sur `f`, mais nous avons dans celle-ci une autre
-`match` sur `erreur.kind()`.
+par la bibliothèque standard et a des variantes qui représentent les différents
+types d'erreurs qui pourraient résulter d'une opération provenant du module
+`io`. La variante que nous voulons utiliser est `ErrorKind::NotFound`, qui
+indique que le fichier que nous essayons d'ouvrir n'existe pas encore. Donc nous
+utilisons `match` sur `f`, mais nous avons dans celle-ci un autre `match` sur
+`erreur.kind()`.
 
 <!--
 The condition we want to check in the inner match is whether the value returned
@@ -372,9 +372,9 @@ Nous souhaitons vérifier dans le `match` interne si la valeur de retour de
 `error.kind()` est la variante `NotFound` de l'énumération `ErrorKind`. Si c'est
 le cas, nous essayons de créer le fichier avec `File::create`. Cependant, comme
 `File::create` peut aussi échouer, nous avons besoin d'une seconde branche dans
-le `match` à l'intérieur. Lorsque le fichier ne peut pas être créé, un message
+le `match` interne. Lorsque le fichier ne peut pas être créé, un message
 d'erreur différent est affiché. La seconde branche du `match` principal reste
-inchangé, donc le programme panique lorsqu'on rencontre une autre erreur que
+inchangée, donc le programme panique lorsqu'on rencontre une autre erreur que
 l'absence de fichier.
 
 <!--
@@ -386,11 +386,11 @@ more seasoned Rustacean might write this code instead of Listing 9-5:
 -->
 
 Cela commence à faire beaucoup de `match` ! L'expression `match` est très utile
-mais est aussi assez rudimentaire. Dans le chapitre 13, vous allez en apprendre
-plus sur les fermetures ; le type `Result<T, E>` a de nombreuses méthodes qui
-acceptent une fermeture et qui sont implémentés en utilisant des expressions
-`match`. L'utilisation de ces méthodes vont rendre votre code plus concis. Un
-Rustacé plus habitué écrira ce code plutôt que celui de l'encart 9-5 :
+mais est aussi assez rudimentaire. Dans le chapitre 13, vous en apprendrez plus
+sur les fermetures ; le type `Result<T, E>` a de nombreuses méthodes qui
+acceptent une fermeture et qui sont implémentées en utilisant des expressions
+`match`. L'utilisation de ces méthodes va rendre votre code plus concis. Un
+Rustacé plus chevronné écrira ce code plutôt que celui de l'encart 9-5 :
 
 <!--
 ```rust,ignore
@@ -415,13 +415,13 @@ contient aucune expression `match` et est plus facile à lire. Revenez sur cet
 exemple après avoir lu le chapitre 13, et renseignez-vous sur la méthode
 `unwrap_or_else` dans la documentation de la bibliothèque standard. De
 nombreuses méthodes de ce type peuvent clarifier de grosses expressions `match`
-lorsque vous traitez les erreurs.
+imbriquées lorsque vous traitez les erreurs.
 
 <!--
 ### Shortcuts for Panic on Error: `unwrap` and `expect`
 -->
 
-### Raccourci pour faire un Panic lors d'une erreur : `unwrap` et `expect`
+### Raccourcis pour faire un Panic lors d'une erreur : `unwrap` et `expect`
 
 <!--
 Using `match` works well enough, but it can be a bit verbose and doesn’t always
