@@ -518,7 +518,7 @@ will be the parameter that we pass to `expect`, rather than the default
 
 Nous utilisons `expect` de la même manière que `unwrap` : pour retourner le
 manipulateur de fichier ou appeler la macro `panic!`. Le message d'erreur
-utilisé par `expect` lors de son appel au `panic!` sera le paramètre que nous
+utilisé par `expect` lors de son appel à `panic!` sera le paramètre que nous
 avons passé à `expect`, plutôt que le message par défaut de `panic!` qu'utilise
 `unwrap`. Voici ce que cela donne :
 
@@ -543,10 +543,10 @@ calls that panic print the same message.
 -->
 
 Comme ce message d'erreur commence par le texte que nous avons précisé, `Échec à
-l'ouverture de hello.txt`, ce sera plus facile de trouver où se situe ce message
-d'erreur dans le code. Si nous utilisons `unwrap` à plusieurs endroits, cela
-peut prendre plus de temps de comprendre exactement quel `unwrap` a causé la
-panique, car tous les appels aux `unwrap` vont afficher le même message.
+l'ouverture de hello.txt`, ce sera plus facile de trouver là d'où provient ce
+message d'erreur dans le code. Si nous utilisons `unwrap` à plusieurs endroits,
+cela peut prendre plus de temps de comprendre exactement quel `unwrap` a causé
+le panic, car tous les appels à `unwrap` vont afficher le même message.
 
 <!--
 ### Propagating Errors
@@ -576,9 +576,9 @@ the file doesn’t exist or can’t be read, this function will return those err
 to the code that called this function.
 -->
 
-Par exemple, l'encart 9-6 montre une fonction qui lit le nom d'utilisateur à
-partir d'un fichier. Si ce fichier n'existe pas ou ne peut pas être lu, cette
-fonction va retourner ces erreurs au code qui a appelé cette fonction.
+Par exemple, l'encart 9-6 montre une fonction qui lit un pseudo à partir d'un
+fichier. Si ce fichier n'existe pas ou ne peut pas être lu, cette fonction va
+retourner ces erreurs au code qui a appelé cette fonction.
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
@@ -637,14 +637,14 @@ Cela signifie que la fonction retourne une valeur de type `Result<T, E>` où le
 paramètre générique `T` a été remplacé par le type `String` et le paramètre
 générique `E` a été remplacé par le type `io::Error`. Si cette fonction réussit
 avec succès, le code qui appelle cette fonction va obtenir une valeur `Ok` qui
-contient un `String`, le nom d'utilisateur que cette fonction lit dans le
-fichier. Si cette fonction rencontre un problème, le code qui appelle cette
-fonction va obtenir une valeur `Err` qui contient une instance de `io::Error`
-qui donne plus d'informations sur la raison du problème. Nous avons choisi
-`io::Error` comme type de retour de cette fonction parce qu'il se trouve que
-c'est le type d'erreur de retour pour toutes les opérations qui peuvent échouer
-que l'on utilise dans le corps de cette fonction : la fonction `File::open` et
-la méthode `read_to_string`.
+contient un `String`, le pseudo que cette fonction lit dans le fichier. Si cette
+fonction rencontre un problème, le code qui appelle cette fonction va obtenir
+une valeur `Err` qui contient une instance de `io::Error` qui donne plus
+d'informations sur la raison du problème. Nous avons choisi `io::Error` comme
+type de retour de cette fonction parce qu'il se trouve que c'est le type
+d'erreur de retour pour toutes les opérations qui peuvent échouer que l'on
+utilise dans le corps de cette fonction : la fonction `File::open` et la méthode
+`read_to_string`.
 
 <!--
 The body of the function starts by calling the `File::open` function. Then we
@@ -681,13 +681,13 @@ la méthode `read_to_string` sur le manipulateur de fichier `f` pour extraire le
 contenu du fichier dans `s`. La méthode `read_to_string` retourne aussi un
 `Result` car elle peut échouer, même si `File::open` réussit. Nous avons donc
 besoin d'un nouveau `match` pour gérer ce `Result` : si `read_to_string`
-réussit, alors notre fonction a réussi, et nous retournons le nom d'utilisateur
-présent dans le contenu du fichier qui est maintenant intégré dans un `Ok`,
-lui-même stocké dans `s`. Si `read_to_string` échoue, nous retournons la valeur
-d'erreur de la même façon que nous avons retourné la valeur d'erreur dans le
-`match` qui gérait la valeur de retour de `File::open`. Cependant, nous n'avons
-pas besoin d'écrire explicitement `return`, car c'est la dernière expression
-de la fonction.
+réussit, alors notre fonction a réussi, et nous retournons le pseudo présent
+dans le contenu du fichier qui est maintenant intégré dans un `Ok`, lui-même
+stocké dans `s`. Si `read_to_string` échoue, nous retournons la valeur d'erreur
+de la même façon que nous avons retourné la valeur d'erreur dans le `match` qui
+gérait la valeur de retour de `File::open`. Cependant, nous n'avons pas besoin
+d'écrire explicitement `return`, car c'est la dernière expression de la
+fonction.
 
 <!--
 The code that calls this code will then handle getting either an `Ok` value
@@ -701,14 +701,14 @@ it to handle appropriately.
 -->
 
 Le code qui appelle ce code va devoir ensuite gérer les cas où il récupère une
-valeur `Ok` qui contient un nom d'utilisateur, ou une valeur `Err` qui contient
-une `io::Error`. Nous ne savons pas ce que va faire le code appelant avec ces
+valeur `Ok` qui contient un pseudo, ou une valeur `Err` qui contient une
+`io::Error`. Nous ne savons pas ce que va faire le code appelant avec ces
 valeurs. Si le code appelant obtient une valeur `Err`, il peut appeler `panic!`
-et faire planter le programme, utiliser un nom d'utilisateur par défaut, ou
-chercher le nom d'utilisateur autre part que dans ce fichier, par exemple. Nous
-n'avons pas assez d'informations sur ce que le code appelant a l'intention de
-faire, donc nous remontons toutes les informations de succès ou d'erreur vers le
-haut pour qu'elles soient gérées correctement.
+et faire planter le programme, utiliser un pseudo par défaut, ou chercher le
+pseudo autre part que dans ce fichier, par exemple. Nous n'avons pas assez
+d'informations sur ce que le code appelant a l'intention de faire, donc nous
+remontons toutes les informations de succès ou d'erreur vers le haut pour
+qu'elles soient gérées correctement.
 
 <!--
 This pattern of propagating errors is so common in Rust that Rust provides the
