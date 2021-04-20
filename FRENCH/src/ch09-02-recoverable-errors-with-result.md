@@ -421,7 +421,7 @@ imbriquées lorsque vous traitez les erreurs.
 ### Shortcuts for Panic on Error: `unwrap` and `expect`
 -->
 
-### Raccourcis pour faire un Panic lors d'une erreur : `unwrap` et `expect`
+### Raccourcis pour faire un panic lors d'une erreur : `unwrap` et `expect`
 
 <!--
 Using `match` works well enough, but it can be a bit verbose and doesn’t always
@@ -552,7 +552,7 @@ le panic, car tous les appels à `unwrap` vont afficher le même message.
 ### Propagating Errors
 -->
 
-### Propager les Erreurs
+### Propager les erreurs
 
 <!--
 When you’re writing a function whose implementation calls something that might
