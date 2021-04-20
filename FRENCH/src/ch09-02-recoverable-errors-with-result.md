@@ -437,10 +437,10 @@ L'utilisation de `match` fonctionne assez bien, mais elle peut être un peu
 verbeuse et ne communique pas forcément bien son intention. Le type
 `Result<T, R>` a de nombreuses méthodes qui lui ont été définies pour différents
 cas. Une de ces méthodes, qui s'appelle `unwrap`, a été implémentée comme
-l'expression `match` que nous avons écrit dans l'encart 9-4. Si la valeur de
-`Result` est une variante de `Ok`, `unwrap` va retourner la valeur dans le
-`Ok`. Si le `Result` est une variante de `Err`, `unwrap` va appeler la macro
-`panic!` pour nous. Voici un exemple de `unwrap` à l'action :
+l'expression `match` que nous avons écrite dans l'encart 9-4. Si la valeur de
+`Result` est la variante `Ok`, `unwrap` va retourner la valeur contenue dans le
+`Ok`. Si le `Result` est la variante `Err`, `unwrap` va appeler la macro
+`panic!` pour nous. Voici un exemple de `unwrap` en action :
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
@@ -490,8 +490,8 @@ panic easier. The syntax of `expect` looks like this:
 L'autre méthode, `expect`, qui ressemble à `unwrap`, nous donne la possibilité
 de définir le message d'erreur du `panic!`. Utiliser `expect` plutôt que
 `unwrap` et lui fournir un bon message d'erreur permet de mieux exprimer le
-problème et faciliter la recherche de la source d'erreur. La syntaxe de `expect`
-est la suivante :
+problème et faciliter la recherche de la source d'un panic. La syntaxe de
+`expect` est la suivante :
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
