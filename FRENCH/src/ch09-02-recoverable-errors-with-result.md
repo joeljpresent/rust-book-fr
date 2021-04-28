@@ -636,14 +636,14 @@ par regarder le type de retour de la fonction : `Result<String, io::Error>`.
 Cela signifie que la fonction retourne une valeur de type `Result<T, E>` où le
 paramètre générique `T` a été remplacé par le type `String` et le paramètre
 générique `E` a été remplacé par le type `io::Error`. Si cette fonction réussit
-avec succès, le code qui appelle cette fonction va obtenir une valeur `Ok` qui
-contient un `String`, le pseudo que cette fonction lit dans le fichier. Si cette
-fonction rencontre un problème, le code qui appelle cette fonction va obtenir
-une valeur `Err` qui contient une instance de `io::Error` qui donne plus
+sans problème, le code qui appelle cette fonction va obtenir une valeur `Ok` qui
+contient une `String`, le pseudo que cette fonction lit dans le fichier. Si
+cette fonction rencontre un problème, le code qui appelle cette fonction va
+obtenir une valeur `Err` qui contient une instance de `io::Error` qui donne plus
 d'informations sur la raison du problème. Nous avons choisi `io::Error` comme
 type de retour de cette fonction parce qu'il se trouve que c'est le type
-d'erreur de retour pour toutes les opérations qui peuvent échouer que l'on
-utilise dans le corps de cette fonction : la fonction `File::open` et la méthode
+d'erreur de retour pour les deux opérations qui peuvent échouer que l'on utilise
+dans le corps de cette fonction : la fonction `File::open` et la méthode
 `read_to_string`.
 
 <!--
@@ -656,12 +656,12 @@ the file handle in the variable `f` and continue.
 -->
 
 Le corps de la fonction commence par appeler la fonction `File::open`. Ensuite,
-nous gérons la valeur `Result` retourné, avec un `match` similaire au `match`
-dans l'encart 9-4, mais, au lieu d'appeler `panic!` dans le cas de `Err`, nous
-retournons prématurément le résultat de la fonction avec la valeur d'erreur de
-`File::open` au code appelant avec la valeur d'erreur de cette fonction. Si
-`File::open` réussit, nous enregistrons le manipulateur de fichier dans la
-variable `f` et nous continuons.
+nous gérons la valeur `Result` retournée, avec un `match` similaire au `match`
+de l'encart 9-4, sauf qu'au lieu d'appeler `panic!` dans le cas de `Err`, nous
+sortons prématurément de la fonction en passant la valeur d'erreur de
+`File::open` au code appelant comme valeur de retour de la fonction. Si
+`File::open` réussit, nous stockons le manipulateur de fichier dans la variable
+`f` et nous continuons.
 
 <!--
 Then we create a new `String` in variable `s` and call the `read_to_string`
@@ -676,18 +676,17 @@ returned the error value in the `match` that handled the return value of
 is the last expression in the function.
 -->
 
-Ensuite, nous créons un nouveau `String` dans la variable `s` et nous appelons
+Ensuite, nous créons une nouvelle `String` dans la variable `s` et nous appelons
 la méthode `read_to_string` sur le manipulateur de fichier `f` pour extraire le
 contenu du fichier dans `s`. La méthode `read_to_string` retourne aussi un
-`Result` car elle peut échouer, même si `File::open` réussit. Nous avons donc
+`Result` car elle peut échouer, même si `File::open` a réussi. Nous avons donc
 besoin d'un nouveau `match` pour gérer ce `Result` : si `read_to_string`
-réussit, alors notre fonction a réussi, et nous retournons le pseudo présent
-dans le contenu du fichier qui est maintenant intégré dans un `Ok`, lui-même
-stocké dans `s`. Si `read_to_string` échoue, nous retournons la valeur d'erreur
-de la même façon que nous avons retourné la valeur d'erreur dans le `match` qui
-gérait la valeur de retour de `File::open`. Cependant, nous n'avons pas besoin
-d'écrire explicitement `return`, car c'est la dernière expression de la
-fonction.
+réussit, alors notre fonction a réussi, et nous retournons le pseudo que nous
+extrait du fichier qui est maintenant intégré dans un `Ok`, lui-même stocké dans
+`s`. Si `read_to_string` échoue, nous retournons la valeur d'erreur de la même
+façon que nous avons retourné la valeur d'erreur dans le `match` qui gérait la
+valeur de retour de `File::open`. Cependant, nous n'avons pas besoin d'écrire
+explicitement `return`, car c'est la dernière expression de la fonction.
 
 <!--
 The code that calls this code will then handle getting either an `Ok` value
@@ -707,8 +706,8 @@ valeurs. Si le code appelant obtient une valeur `Err`, il peut appeler `panic!`
 et faire planter le programme, utiliser un pseudo par défaut, ou chercher le
 pseudo autre part que dans ce fichier, par exemple. Nous n'avons pas assez
 d'informations sur ce que le code appelant a l'intention de faire, donc nous
-remontons toutes les informations de succès ou d'erreur vers le haut pour
-qu'elles soient gérées correctement.
+remontons toutes les informations de succès ou d'erreur pour qu'elles soient
+gérées correctement.
 
 <!--
 This pattern of propagating errors is so common in Rust that Rust provides the
