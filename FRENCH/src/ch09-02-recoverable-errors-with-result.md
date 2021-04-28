@@ -659,7 +659,7 @@ Le corps de la fonction commence par appeler la fonction `File::open`. Ensuite,
 nous gérons la valeur `Result` retournée, avec un `match` similaire au `match`
 de l'encart 9-4, sauf qu'au lieu d'appeler `panic!` dans le cas de `Err`, nous
 sortons prématurément de la fonction en passant la valeur d'erreur de
-`File::open` au code appelant comme valeur de retour de la fonction. Si
+`File::open` au code appelant comme valeur de retour de cette fonction. Si
 `File::open` réussit, nous stockons le manipulateur de fichier dans la variable
 `f` et nous continuons.
 
@@ -682,11 +682,12 @@ contenu du fichier dans `s`. La méthode `read_to_string` retourne aussi un
 `Result` car elle peut échouer, même si `File::open` a réussi. Nous avons donc
 besoin d'un nouveau `match` pour gérer ce `Result` : si `read_to_string`
 réussit, alors notre fonction a réussi, et nous retournons le pseudo que nous
-extrait du fichier qui est maintenant intégré dans un `Ok`, lui-même stocké dans
-`s`. Si `read_to_string` échoue, nous retournons la valeur d'erreur de la même
-façon que nous avons retourné la valeur d'erreur dans le `match` qui gérait la
-valeur de retour de `File::open`. Cependant, nous n'avons pas besoin d'écrire
-explicitement `return`, car c'est la dernière expression de la fonction.
+avons extrait du fichier qui est maintenant intégré dans un `Ok`, lui-même
+stocké dans `s`. Si `read_to_string` échoue, nous retournons la valeur d'erreur
+de la même façon que nous avons retourné la valeur d'erreur dans le `match` qui
+gérait la valeur de retour de `File::open`. Cependant, nous n'avons pas besoin
+d'écrire explicitement `return`, car c'est la dernière expression de la
+fonction.
 
 <!--
 The code that calls this code will then handle getting either an `Ok` value
