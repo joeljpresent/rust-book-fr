@@ -27,7 +27,7 @@ defined as having two variants, `Ok` and `Err`, as follows:
 
 Souvenez-vous de la section [“Gérer les erreurs potentielles avec le type
 `Result`”][handle_failure]<!-- ignore --> du chapitre 2 que l'énumération
-`Result` avait deux variantes, `Ok` et `Err`, comme ci-dessous :
+`Result` possède deux variantes, `Ok` et `Err`, comme ci-dessous :
 
 <!--
 [handle_failure]: ch02-00-guessing-game-tutorial.html#handling-potential-failure-with-the-result-type
