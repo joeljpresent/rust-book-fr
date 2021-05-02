@@ -208,7 +208,7 @@ limit. In these cases, returning a `Result` indicates that failure is an
 expected possibility that the calling code must decide how to handle.
 -->
 
-Cependant, lorsque un potentiel échec est prévisible, il est plus approprié de
+Cependant, lorsqu'un potentiel échec est prévisible, il est plus approprié de
 retourner un `Result` plutôt que faire appel à `panic!`. Il peut s'agir par
 exemple d'un interpréteur qui reçoit des données erronées, ou une requête HTTP
 qui retourne un statut qui indique que vous avez atteint une limite de débit.
@@ -248,7 +248,7 @@ violation de contrat signifie toujours un bogue du côté de l'appelant, et ce
 n'est le genre d'erreur que vous voulez que le code appelant gère explicitement.
 En fait, il n'y a aucun moyen rationnel pour que le code appelant se corrige :
 le *développeur* du code appelant doit corriger le code. Les contrats pour les
-fonctions, en particulier lorsque une violation va faire paniquer, doivent être
+fonctions, en particulier lorsqu'une violation va faire paniquer, doivent être
 expliqués dans la documentation de l'API des dites fonctions.
 
 <!--

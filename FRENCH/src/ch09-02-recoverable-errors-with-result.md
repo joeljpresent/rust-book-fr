@@ -13,7 +13,7 @@ file instead of terminating the process.
 -->
 
 La plupart des erreurs ne sont pas assez graves au point d'arrêter complètement
-le programme. Parfois, lorsque une fonction échoue, c'est pour une raison que
+le programme. Parfois, lorsqu'une fonction échoue, c'est pour une raison que
 vous pouvez facilement comprendre et pour laquelle vous pouvez agir en
 conséquence. Par exemple, si vous essayez d'ouvrir un fichier et que l'opération
 échoue parce que le fichier n'existe pas, vous pourriez vouloir créer le fichier
