@@ -68,7 +68,7 @@ pour le moment, c'est que `T` représente le type de valeur imbriquée dans la
 variante `Ok` qui sera retournée dans le cas d'un succès, et `E` représente le
 type d'erreur imbriquée dans la variante `Err` qui sera retournée dans le cas
 d'un échec. Comme `Result` a ces paramètres de type génériques, nous pouvons
-utiliser le type `Result` et les fonctions que la bibliothèque standard lui ont
+utiliser le type `Result` et les fonctions que la bibliothèque standard lui a
 associées dans différentes situations où la valeur de succès et la valeur
 d'erreur peuvent varier.
 
