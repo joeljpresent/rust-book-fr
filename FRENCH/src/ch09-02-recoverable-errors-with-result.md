@@ -435,7 +435,7 @@ call the `panic!` macro for us. Here is an example of `unwrap` in action:
 
 L'utilisation de `match` fonctionne assez bien, mais elle peut être un peu
 verbeuse et ne communique pas forcément bien son intention. Le type
-`Result<T, R>` a de nombreuses méthodes qui lui ont été définies pour différents
+`Result<T, E>` a de nombreuses méthodes qui lui ont été définies pour différents
 cas. Une de ces méthodes, qui s'appelle `unwrap`, a été implémentée comme
 l'expression `match` que nous avons écrite dans l'encart 9-4. Si la valeur de
 `Result` est la variante `Ok`, `unwrap` va retourner la valeur contenue dans le
@@ -463,8 +463,9 @@ If we run this code without a *hello.txt* file, we’ll see an error message fro
 the `panic!` call that the `unwrap` method makes:
 -->
 
-Si nous exécutons ce code sans le fichier *hello.txt*, nous allons voir un
-message d'erreur suite à l'appel à `panic!` que la méthode `unwrap` a fait :
+Si nous exécutons ce code alors qu'il n'y a pas de fichier *hello.txt*, nous
+allons voir un message d'erreur suite à l'appel à `panic!` que la méthode
+`unwrap` a fait :
 
 <!--
 ```text
@@ -1021,8 +1022,8 @@ valid return type is `Result<T, E>`, as shown here:
 -->
 
 La fonction `main` est spéciale, et il y a des restrictions sur ce que doit être
-son type de retour. Une type de retour correct pour `main` est `()`, et il
-existe aussi un autre type de retour acceptable qui est `Result<T, E>`, comme
+son type de retour. Un type de retour correct pour `main` est `()`, et il existe
+aussi un autre type de retour acceptable qui est `Result<T, E>`, comme
 ci-dessous :
 
 <!--
@@ -1043,11 +1044,10 @@ read `Box<dyn Error>` to mean “any kind of error.” Using `?` in a `main`
 function with this return type is allowed.
 -->
 
-Le type `Box<dyn Error>` est ce qu'on appelle un objet trait, que nous allons
-voir dans une section du [chapitre 17][trait-objects]<!-- ignore -->. Pour
-l'instant, vous pouvez interpréter `Box<dyn Error>` en “tout type d'erreur”.
-L'utilisation de `?` dans la fonction `main` avec ce type de retour est donc
-autorisée.
+Le type `Box<dyn Error>` est ce qu'on appelle un objet trait, que nous verrons
+dans une section du [chapitre 17][trait-objects]<!-- ignore -->. Pour l'instant,
+vous pouvez interpréter `Box<dyn Error>` en “tout type d'erreur”. L'utilisation
+de `?` dans la fonction `main` avec ce type de retour est donc autorisée.
 
 <!--
 Now that we’ve discussed the details of calling `panic!` or returning `Result`,
