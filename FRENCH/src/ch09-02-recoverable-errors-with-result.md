@@ -716,7 +716,7 @@ question mark operator `?` to make this easier.
 -->
 
 Cette façon de propager les erreurs est si courante en Rust que Rust fournit
-l'opérateur du point d'interrogation `?` pour faciliter ceci.
+l'opérateur point d'interrogation `?` pour faciliter ceci.
 
 <!--
 #### A Shortcut for Propagating Errors: the `?` Operator
@@ -730,9 +730,9 @@ same functionality as it had in Listing 9-6, but this implementation uses the
 `?` operator.
 -->
 
-L'encart 9-7 montre une implémentation de `read_username_from_file` qui a les
-mêmes fonctionnalités qu'elle a dans l'encart 9-6, mais cette implémentation
-utilise l'opérateur point d'interrogation :
+L'encart 9-7 montre une implémentation de `lire_pseudo_depuis_fichier` qui a les
+mêmes fonctionnalités que dans l'encart 9-6, mais cette implémentation utilise
+l'opérateur point d'interrogation :
 
 <!--
 <span class="filename">Filename: src/main.rs</span>
@@ -775,10 +775,10 @@ code.
 -->
 
 Le `?` placé après une valeur `Result` est conçu pour fonctionner presque de la
-même manière que les expressions `match` que nous avons défini pour gérer les
+même manière que les expressions `match` que nous avons définies pour gérer les
 valeurs `Result` dans l'encart 9-6. Si la valeur du `Result` est un `Ok`, la
 valeur dans le `Ok` sera retournée par cette expression et le programme
-continuera. Si la valeur est une `Err`, la `Err` sera retournée par la fonction
+continuera. Si la valeur est un `Err`, le `Err` sera retourné par la fonction
 comme si nous avions utilisé le mot-clé `return` afin que la valeur d'erreur
 soit propagée au code appelant.
 
@@ -797,17 +797,17 @@ conversion automatically.
 -->
 
 Il y a une différence entre ce que fait l'expression `match` de l'encart 9-6 et
-ce que fait l'opérateur `?` : les valeurs d'erreurs sur lesquelles sont
-utilisées l'opérateur `?` passent par la fonction `from`, définie dans le trait
-`From` de la bibliothèque standard, qui est utilisée pour convertir les erreurs
-d'un type à un autre. Lorsque l'opérateur `?` utilise la fonction `from`, le
-type d'erreur reçu est converti dans le type d'erreur déclaré dans le type de
-retour de la fonction concernée. C'est utile lorsque une fonction retourne un
-type d'erreur qui peut couvrir tous les cas d'échec de la fonction, même si
-certaines de ses parties peuvent échouer pour différentes raisons. A partir du
-moment que chaque type d'erreur implémente la fonction `from` pour expliquer
-comment se convertir elle-même dans le type d'erreur retourné, l'opérateur `?`
-se charge de faire la conversion automatiquement.
+ce que fait l'opérateur `?` : les valeurs d'erreurs sur lesquelles est utilisé
+l'opérateur `?` passent par la fonction `from`, définie dans le trait `From` de
+la bibliothèque standard, qui est utilisée pour convertir les erreurs d'un type
+à un autre. Lorsque l'opérateur `?` appelle la fonction `from`, le type d'erreur
+reçu est converti dans le type d'erreur déclaré dans le type de retour de la
+fonction concernée. C'est utile lorsqu'une fonction retourne un type d'erreur
+qui peut couvrir tous les cas d'échec de la fonction, même si certaines de ses
+parties peuvent échouer pour différentes raisons. À partir du moment que chaque
+type d'erreur implémente la fonction `from` pour expliquer comment se convertir
+lui-même dans le type d'erreur retourné, l'opérateur `?` se charge de faire la
+conversion automatiquement.
 
 <!--
 In the context of Listing 9-7, the `?` at the end of the `File::open` call will
@@ -819,8 +819,8 @@ value to the calling code. The same thing applies to the `?` at the end of the
 
 Dans le cas de l'encart 9-7, le `?` à la fin de l'appel à `File::open` va
 retourner la valeur à l'intérieur d'un `Ok` à la variable `f`. Si une erreur se
-produit, l'opérateur `?` va retourner prématurément la fonction et fournir une
-valeur `Err` au code appelant. La même chose se produira au `?` à ma fin de
+produit, l'opérateur `?` va quitter prématurément la fonction et retourner une
+valeur `Err` au code appelant. La même chose se produira au `?` à la fin de
 l'appel à `read_to_string`.
 
 <!--
@@ -829,7 +829,7 @@ implementation simpler. We could even shorten this code further by chaining
 method calls immediately after the `?`, as shown in Listing 9-8.
 -->
 
-L'opérateur `?` épargne de l'écriture de code et facilite l'implémentation de la
+L'opérateur `?` allège l'écriture de code et facilite l'implémentation de la
 fonction. Nous pouvons même encore plus réduire ce code en enchaînant
 immédiatement les appels aux méthodes après le `?` comme dans l'encart 9-8 :
 
@@ -875,14 +875,14 @@ Listing 9-7; this is just a different, more ergonomic way to write it.
 -->
 
 Nous avons déplacé la création de la nouvelle `String` dans `s` au début de la
-fonction ; cette partie n'a pas changée. Au lieu de créer la variable `f`, nous
+fonction ; cette partie n'a pas changé. Au lieu de créer la variable `f`, nous
 enchaînons directement l'appel à `read_to_string` sur le résultat de
 `File::open("hello.txt")?`. Nous avons toujours le `?` à la fin de l'appel à
-`read_to_string`, et nous retournons toujours une valeur `Ok` contenant le nom
-d'utilisateur dans `s` lorsque `File::open` et `read_to_string` réussissent
-toutes les deux plutôt que de retourner des erreurs. Cette fonctionnalité est
-toujours la même que dans l'encart 9-6 et l'encart 9-7 ; c'est juste une façon
-différente et plus ergonomique de l'écrire.
+`read_to_string`, et nous retournons toujours une valeur `Ok` contenant le
+pseudo dans `s` lorsque `File::open` et `read_to_string` réussissent toutes les
+deux plutôt que de retourner des erreurs. Cette fonctionnalité est toujours la
+même que dans l'encart 9-6 et l'encart 9-7 ; c'est juste une façon différente et
+plus ergonomique de l'écrire.
 
 <!--
 Speaking of different ways to write this function, Listing 9-9 shows that
@@ -919,8 +919,8 @@ don't want to include it for rustdoc testing purposes. -- >
 opening and then reading the file</span>
 -->
 
-<span class="caption">Encart 9-9: utilisation de `fs::read_to_string` plutôt que
-d'ouvrir puis lire le fichier</span>
+<span class="caption">Encart 9-9 : utilisation de `fs::read_to_string` plutôt
+que d'ouvrir puis lire le fichier</span>
 
 <!--
 Reading a file into a string is a fairly common operation, so Rust provides the
@@ -932,11 +932,11 @@ first.
 -->
 
 Récupérer le contenu d'un fichier dans une `String` est une opération assez
-courante, donc Rust fournir la fonction `fs::read_to_string` assez pratique, qui
-ouvre le fichier, crée une nouvelle `String`, lit de contenu du fichier, envoie
-le contenu dans cette `String`, et la retourne. Evidemment, l'utilisation de
+courante, donc Rust fournit la fonction `fs::read_to_string` assez pratique, qui
+ouvre le fichier, crée une nouvelle `String`, lit le contenu du fichier, insère
+ce contenu dans cette `String`, et la retourne. Évidemment, l'utilisation de
 `fs:read_to_string` ne nous offre pas l'occasion d'expliquer toute la gestion
-des erreurs, donc nous utiliserons d'abord la façon qui est plus longue.
+des erreurs, donc nous avons d'abord utilisé la façon qui est plus longue.
 
 <!--
 #### The `?` Operator Can Be Used in Functions That Return `Result`
@@ -954,7 +954,7 @@ has to be a `Result` to be compatible with this `return`.
 
 L'opérateur `?` peut être utilisé dans des fonctions qui ont un type de retour
 `Result`, car il est conçu pour fonctionner de la même manière que l'expression
-`match` que nous avons utilisé dans l'encart 9-6. La partie du `match` qui
+`match` que nous avons utilisée dans l'encart 9-6. La partie du `match` qui
 nécessite le type de retour `Result` est `return Err(e)`, donc le type de retour
 de cette fonction doit être un `Result` pour être compatible avec ce `return`.
 
@@ -963,9 +963,8 @@ Let’s look at what happens if we use the `?` operator in the `main` function,
 which you’ll recall has a return type of `()`:
 -->
 
-Voyons ce que ce passe si nous utilisons l'opérateur `?` dans la fonction
-`main`, pour laquelle vous devriez vous souvenir qu'elle a un type de retour
-`()` :
+Voyons ce que ce passe si nous utilisons l'opérateur `?` dans la fonction `main`
+qui, souvenez-vous, a comme type de retour `()` :
 
 <!--
 ```rust,ignore,does_not_compile
@@ -1005,14 +1004,14 @@ a `match` or one of the `Result<T, E>` methods to handle the `Result<T, E>` in
 whatever way is appropriate.
 -->
 
-Cette erreur explique que nous sommes uniquement autorisés à utiliser
-l'opérateur `?` dans une fonction qui retourne `Result` ou `Option` ou un autre
-type qui implémente `std::ops::Try`. Lorsque vous écrivez du code dans une
-fonction qui ne retourne pas un de ces types, et que vous souhaitez utiliser `?`
-lorsque vous appelez d'autres fonctions qui retournent `Result<T, E>`, vous avez
-deux façons de régler le problème. La première est de changer le type de retour
-de votre fonction en `Result<T, E>` si vous pouvez le faire. L'autre solution
-est d'utiliser un `match` ou une des méthodes de `Result<T, E>` pour gérer le
+Cette erreur explique que nous sommes autorisés à utiliser l'opérateur `?`
+uniquement dans une fonction qui retourne `Result`, `Option` ou un autre type
+qui implémente `std::ops::Try`. Lorsque vous écrivez du code dans une fonction
+qui ne retourne pas un de ces types et que vous souhaitez utiliser `?` lorsque
+vous appelez d'autres fonctions qui retournent `Result<T, E>`, vous avez deux
+façons de régler le problème. La première est de changer le type de retour de
+votre fonction en `Result<T, E>` si vous pouvez le faire. L'autre solution est
+d'utiliser un `match` ou une des méthodes de `Result<T, E>` pour gérer le
 `Result<T, E>` de la manière la plus appropriée.
 
 <!--
@@ -1046,7 +1045,7 @@ function with this return type is allowed.
 
 Le type `Box<dyn Error>` est ce qu'on appelle un objet trait, que nous allons
 voir dans une section du [chapitre 17][trait-objects]<!-- ignore -->. Pour
-l'instant vous pouvez interpréter `Box<dyn Error>` en “tout type d'erreur”.
+l'instant, vous pouvez interpréter `Box<dyn Error>` en “tout type d'erreur”.
 L'utilisation de `?` dans la fonction `main` avec ce type de retour est donc
 autorisée.
 
