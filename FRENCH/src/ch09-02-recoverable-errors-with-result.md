@@ -173,9 +173,9 @@ conveys.
 
 Ce type de retour veut dire que l'appel à `File::open` peut réussir et nous
 retourner un manipulateur de fichier qui peut nous permettre de le lire ou d'y
-écrire. L'utilisation de cette fonction peut aussi échouer : par exemple, le
-fichier peut ne pas exister, ou nous n'avons pas le droit d'accéder au fichier.
-La fonction `File::open` doit avoir un moyen de nous dire si son utilisation a
+écrire. L'utilisation de cette fonction peut aussi échouer : par exemple, si le
+fichier n'existe pas, ou si nous n'avons pas le droit d'accéder au fichier. La
+fonction `File::open` doit avoir un moyen de nous dire si son utilisation a
 réussi ou échoué et en même temps nous fournir soit le manipulateur de fichier,
 soit des informations sur l'erreur. C'est exactement ces informations que
 l'énumération `Result` se charge de nous transmettre.
@@ -300,7 +300,7 @@ at Listing 9-5, which adds an inner `match` expression.
 Le code dans l'encart 9-4 va faire un `panic!` peu importe la raison de l'échec
 de `File::open`. Ce que nous voudrions plutôt faire est de réagir différemment
 en fonction de différents cas d'erreurs : si `File::open` a échoué parce que le
-fichier n'existe pas, nous voulons créer le fichier et renvoyer le manipulateur
+fichier n'existe pas, nous voulons créer le fichier et retourner le manipulateur
 de fichier pour ce nouveau fichier. Si `File::open` échoue pour toute autre
 raison, par exemple si nous n'avons pas l'autorisation d'ouvrir le fichier,
 nous voulons quand même que le code lance un `panic!` de la même manière qu'il
