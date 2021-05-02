@@ -963,7 +963,7 @@ Let’s look at what happens if we use the `?` operator in the `main` function,
 which you’ll recall has a return type of `()`:
 -->
 
-Voyons ce que ce passe si nous utilisons l'opérateur `?` dans la fonction `main`
+Voyons ce qui se passe si nous utilisons l'opérateur `?` dans la fonction `main`
 qui, souvenez-vous, a comme type de retour `()` :
 
 <!--
