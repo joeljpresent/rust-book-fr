@@ -2,7 +2,7 @@
 ## To `panic!` or Not to `panic!`
 -->
 
-## Paniquer ou ne pas paniquer, telle est la question ...
+## Paniquer ou ne pas paniquer, telle est la question
 
 <!--
 So how do you decide when you should call `panic!` and when you should return
@@ -27,7 +27,7 @@ votre code. Lorsque vous choisissez de retourner une valeur `Result`, vous
 donnez plus de choix au code appelant plutôt que de prendre des décisions à sa
 place. Le code appelant peut choisir d'essayer de récupérer l'erreur de manière
 appropriée à la situation, ou il peut décider que dans ce cas une valeur `Err`
-est irrécupérable, il va donc utiliser `panic!` et convertir votre erreur
+est irrécupérable, et va donc utiliser `panic!` et transformer votre erreur
 récupérable en erreur irrécupérable. Ainsi, retourner `Result` est un bon choix
 par défaut lorsque vous définissez une fonction qui peut échouer.
 
@@ -42,17 +42,17 @@ library code.
 
 Dans certaines situations, il est plus approprié d'écrire du code qui panique
 plutôt que de retourner un `Result`. Nous allons voir pourquoi il est approprié
-de paniquer dans les exemples, les prototypes, et les tests. Ensuite, nous
+de paniquer dans les exemples, les prototypes et les tests. Ensuite, nous
 verrons des situations dans lesquelles vous savez en tant qu'humain qu'un
-code ne peut pas échouer mais que le compilateur ne peut pas le déduire par
+code ne peut pas échouer, mais que le compilateur ne peut pas le déduire par
 lui-même. Puis nous allons conclure le chapitre par quelques lignes directrices
-générales pour décider s'il faut paniquer dans le code des librairies.
+générales pour décider s'il faut paniquer dans le code d'une bibliothèque.
 
 <!--
 ### Examples, Prototype Code, and Tests
 -->
 
-### Les exemples, prototypes, et les tests
+### Les exemples, les prototypes et les tests
 
 <!--
 When you’re writing an example to illustrate some concept, having robust
@@ -65,7 +65,7 @@ handle errors, which can differ based on what the rest of your code is doing.
 Lorsque vous écrivez un exemple pour illustrer un concept, avoir un code de
 gestion des erreurs très résilient peut nuire à la clarté de l'exemple. Dans
 les exemples, il est courant d'utiliser une méthode comme `unwrap` (qui peut
-faire un `panic!`) pour remplacer le code de gestion de l'erreur que vous
+faire un panic) pour remplacer le code de gestion de l'erreur que vous
 utiliseriez en temps normal dans votre application, et qui peut changer en
 fonction de ce que le reste de votre code va faire.
 
@@ -89,8 +89,8 @@ happen.
 
 Si l'appel à une méthode échoue dans un test, nous voulons que tout le test
 échoue, même si cette méthode n'est pas la fonctionnalité que nous testons.
-Comme `panic!` est la manière de le marquer un échec, utiliser `unwrap` ou
-`expect` est exactement ce qui est nécessaire.
+Puisque c'est `panic!` qui indique qu'un test a échoué, utiliser `unwrap` ou
+`expect` est exactement ce qu'il faut faire.
 
 <!--
 ### Cases in Which You Have More Information Than the Compiler
@@ -109,14 +109,14 @@ have an `Err` variant, it’s perfectly acceptable to call `unwrap`. Here’s an
 example:
 -->
 
-Vous pouvez utiliser `unwrap` lorsque vous avez une logique qui garantit que
-`Result` sera toujours une valeur `Ok`, mais le compilateur n'est pas conçu pour
-comprendre ce genre de logique. Vous devrez toujours travailler avec des valeurs
-de type `Result` : de manière générale, toutes les opérations que vous utilisez
-peuvent toujours échouer, même si dans votre cas c'est logiquement impossible.
-Si en inspectant manuellement le code vous vous rendez compte que vous n'aurez
-jamais une variante `Err`, vous pouvez tout à fait utiliser `unwrap`. Voici un
-exemple :
+Vous pouvez utiliser `unwrap` lorsque vous avez une certaine logique qui
+garantit que le `Result` sera toujours une valeur `Ok`, mais que ce n'est pas le
+genre de logique que le compilateur arrive à comprendre. Vous aurez quand même
+une valeur `Result` à gérer : l'opération que vous utilisez peut théoriquement
+échouer de manière générale, même si dans votre cas c'est logiquement
+impossible. Si en inspectant manuellement le code vous vous rendez compte que
+vous n'aurez jamais une variante `Err`, vous pouvez tout à fait utiliser
+`unwrap`. Voici un exemple :
 
 <!--
 ```rust
@@ -143,14 +143,14 @@ we’d definitely want to handle the `Result` in a more robust way instead.
 Nous créons une instance de `IpAddr` en interprétant une chaîne de caractères
 codée en dur dans le code. Nous savons que `127.0.0.1` est une adresse IP
 valide, donc il est acceptable d'utiliser `unwrap` ici. Toutefois, avoir une
-chaîne de caractères valide, codée en dur ne change jamais le type de retour de
-la méthode `parse` : nous obtenons toujours une valeur de type `Result`, et le
-compilateur va nous demander de gérer le `Result` au cas où nous obtenons la
-variante `Err` car le compilateur n'est pas encore suffisamment intelligent pour
+chaîne de caractères valide et codée en dur ne change pas le type de retour de
+la méthode `parse` : nous obtenons toujours une valeur de type `Result` et le
+compilateur va nous demander de gérer le `Result` comme si on pouvait obtenir la
+variante `Err`, car le compilateur n'est pas suffisamment intelligent pour
 comprendre que cette chaîne de caractères est toujours une adresse IP valide. Si
-le texte de l'adresse IP provient de l'utilisateur plutôt que d'être codé en dur
-dans le programme fait qu'il y a désormais une possibilité d'erreur, alors nous
-devrions vouloir gérer le `Result` de manière plus résilient.
+le texte de l'adresse IP provient de l'utilisateur au lieu d'être codé en dur
+dans le programme et donc qu'il y a désormais une possibilité d'erreur, alors
+nous devrions vouloir gérer le `Result` d'une manière plus résiliente.
 
 <!--
 ### Guidelines for Error Handling
@@ -194,7 +194,7 @@ and it returns an invalid state that you have no way of fixing.
 
 Si quelqu'un utilise votre code et lui fournit des valeurs qui n'ont pas de
 sens, la meilleure des choses à faire et d'utiliser `panic!` et d'avertir la
-personne qui utilise votre librairie du bogue dans leur code afin qu'il le
+personne qui utilise votre bibliothèque du bogue dans leur code afin qu'il le
 règle pendant la phase de développement. De la même manière, `panic!` est
 parfois approprié si vous appelez du code externe dont vous n'avez pas la main
 dessus, et qu'il retourne de mauvaises conditions que vous ne pouvez pas
@@ -208,7 +208,7 @@ limit. In these cases, returning a `Result` indicates that failure is an
 expected possibility that the calling code must decide how to handle.
 -->
 
-Cependant, lorsqu'un potentiel échec est prévisible, il est plus approprié de
+Cependant, lorsque un potentiel échec est prévisible, il est plus approprié de
 retourner un `Result` plutôt que faire appel à `panic!`. Il peut s'agir par
 exemple d'un interpréteur qui reçoit des données erronées, ou une requête HTTP
 qui retourne un statut qui indique que vous avez atteint une limite de débit.
@@ -248,7 +248,7 @@ violation de contrat signifie toujours un bogue du côté de l'appelant, et ce
 n'est le genre d'erreur que vous voulez que le code appelant gère explicitement.
 En fait, il n'y a aucun moyen rationnel pour que le code appelant se corrige :
 le *développeur* du code appelant doit corriger le code. Les contrats pour les
-fonctions, en particulier lorsqu'une violation va faire paniquer, doivent être
+fonctions, en particulier lorsque une violation va faire paniquer, doivent être
 expliqués dans la documentation de l'API des dites fonctions.
 
 <!--
