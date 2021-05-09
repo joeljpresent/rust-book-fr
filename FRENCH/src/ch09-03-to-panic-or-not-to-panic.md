@@ -166,11 +166,11 @@ invalid values, contradictory values, or missing values are passed to your
 code—plus one or more of the following:
 -->
 
-Il est recommandé de faire paniquer votre code dès qu'il s'exécutera dans de
-mauvaises conditions. Dans ce cas, une *mauvaise condition* est lorsqu'un
-postulat, une garantie, un contrat ou un invariant a été rompu, comme des
-valeurs invalides, contradictoires ou manquantes qui sont fournies à votre code,
-ainsi qu'un ou plusieurs des éléments suivants :
+Il est recommandé de faire paniquer votre code dès qu'il risque d'aboutir à un
+état invalide. Dans ce contexte, un *état invalide* est lorsqu'un postulat, une
+garantie, un contrat ou un invariant a été rompu, comme des valeurs invalides,
+contradictoires ou manquantes qui sont fournies à votre code, ainsi qu'un ou
+plusieurs des éléments suivants :
 
 <!--
 * The bad state is not something that’s *expected* to happen occasionally.
@@ -178,11 +178,11 @@ ainsi qu'un ou plusieurs des éléments suivants :
 * There’s not a good way to encode this information in the types you use.
 -->
 
-* Ces mauvaises conditions ne sont pas *censées* apparaître par intermittence.
-* Après cette instruction, votre code a besoin de ne pas être dans ces
-mauvaises conditions.
-* Il n'y a pas de bonne façon d'encoder l'information dans les types que vous
-utilisez.
+* L'état invalide n'est pas *censé* se produire occasionnellement.
+* Après cette instruction, votre code a besoin de ne pas être dans cet état
+  invalide.
+* Il n'y a pas de bonne façon d'encoder cette information dans les types que
+  vous utilisez.
 
 <!--
 If someone calls your code and passes in values that don’t make sense, the best
@@ -193,12 +193,11 @@ and it returns an invalid state that you have no way of fixing.
 -->
 
 Si quelqu'un utilise votre code et lui fournit des valeurs qui n'ont pas de
-sens, la meilleure des choses à faire et d'utiliser `panic!` et d'avertir la
-personne qui utilise votre bibliothèque du bogue dans leur code afin qu'il le
+sens, la meilleure des choses à faire est d'utiliser `panic!` et d'avertir la
+personne qui utilise votre bibliothèque du bogue dans leur code afin qu'elle le
 règle pendant la phase de développement. De la même manière, `panic!` est
-parfois approprié si vous appelez du code externe dont vous n'avez pas la main
-dessus, et qu'il retourne de mauvaises conditions que vous ne pouvez pas
-corriger.
+parfois approprié si vous appelez du code externe sur lequel vous n'avez pas la
+main, et qu'il retourne un état invalide que vous ne pouvez pas corriger.
 
 <!--
 However, when failure is expected, it’s more appropriate to return a `Result`
@@ -208,11 +207,11 @@ limit. In these cases, returning a `Result` indicates that failure is an
 expected possibility that the calling code must decide how to handle.
 -->
 
-Cependant, lorsque un potentiel échec est prévisible, il est plus approprié de
-retourner un `Result` plutôt que faire appel à `panic!`. Il peut s'agir par
+Cependant, si l'on s'attend à rencontrer des échecs, il est plus approprié de
+retourner un `Result` plutôt que de faire appel à `panic!`. Il peut s'agir par
 exemple d'un interpréteur qui reçoit des données erronées, ou une requête HTTP
 qui retourne un statut qui indique que vous avez atteint une limite de débit.
-Dans ces cas-ci, vous devriez indiquer qu'il est possible que cela puisse
+Dans ces cas-là, vous devriez indiquer qu'il est possible que cela puisse
 échouer en retournant un `Result` afin que le code appelant puisse décider quoi
 faire pour gérer le problème.
 
@@ -234,22 +233,22 @@ documentation for the function.
 -->
 
 Lorsque votre code effectue des opérations sur des valeurs, votre code devrait
-d'abord vérifier que ces valeurs sont valides, et faire un `panic!` si les
-valeurs ne sont pas correctes. C'est pour essentiellement des raisons de
-sécurité : tenter de travailler avec des données invalides peut exposer votre
-code à des vulnérabilités. C'est la raison principale pour laquelle la
-bibliothèque standard va faire un `panic!` si vous essayez d'accéder d'accéder à
-la mémoire en dehors des limites : essayer d'accéder à de la mémoire qui n'a
-pas de rapport avec la structure des données actuelle est un problème de
-sécurité fréquent. Les fonctions ont parfois des *contrats* : leur comportement
-est garanti uniquement si les données d'entrée remplissent des conditions
-particulières. Paniquer lorsque le contrat est violé est justifié, car une
-violation de contrat signifie toujours un bogue du côté de l'appelant, et ce
-n'est le genre d'erreur que vous voulez que le code appelant gère explicitement.
-En fait, il n'y a aucun moyen rationnel pour que le code appelant se corrige :
-le *développeur* du code appelant doit corriger le code. Les contrats pour les
-fonctions, en particulier lorsque une violation va faire paniquer, doivent être
-expliqués dans la documentation de l'API des dites fonctions.
+d'abord vérifier que ces valeurs sont valides, et faire un panic si les valeurs
+ne sont pas correctes. C'est essentiellement pour des raisons de sécurité :
+tenter de travailler avec des données invalides peut exposer votre code à des
+vulnérabilités. C'est la principale raison pour laquelle la bibliothèque
+standard va appeler `panic!` si vous essayez d'accéder à la mémoire hors
+limite : essayer d'accéder à de la mémoire qui n'appartient pas à la structure
+de données actuelle est un problème de sécurité fréquent. Les fonctions ont
+souvent des *contrats* : leur comportement est garanti uniquement si les données
+d'entrée remplissent des conditions particulières. Paniquer lorsque le contrat
+est violé est justifié, car une violation de contrat signifie toujours un bogue
+du côté de l'appelant, et ce n'est le genre d'erreur que vous voulez que le code
+appelant gère explicitement. En fait, il n'y a aucun moyen rationnel pour que le
+code appelant se corrige : le *développeur* du code appelant doit corriger le
+code. Les contrats d'une fonction, en particulier lorsqu'une violation va causer
+un panic, doivent être expliqués dans la documentation de l'API de ladite
+fonction.
 
 <!--
 However, having lots of error checks in all of your functions would be verbose
@@ -267,18 +266,18 @@ the parameter is never negative.
 -->
 
 Cependant, avoir beaucoup de vérifications d'erreurs dans toutes vos fonctions
-risque d'être verbeux et ennuyant. Heureusement, vous pouvez utiliser le système
-de type de Rust (et donc la vérification de type que fait le compilateur) pour
-assurer une partie des vérifications à votre place. Si votre fonction a un
-paramètre d'un type précis, vous pouvez continuer à écrire votre code en sachant
-que le compilateur s'est déjà assuré que vous avez une valeur valide. Par
-exemple, si vous obtenez un type de valeur plutôt qu'une `Option`, votre
-programme s'attend à obtenir *quelque chose* plutôt que *rien*. Votre code n'a
-donc pas à gérer les deux cas de variantes `Some` et `None` : il n'aura qu'une
-seule possibilité de valeur. Du code qui essaye de ne rien fournir à votre
-fonction ne compilera même pas, donc votre fonction n'a pas besoin de vérifier
-ce cas-ci lors de l'exécution. Un autre exemple est d'utiliser un type d'entier
-sans signe comme `u32`, qui garantit que le paramètre n'est jamais négatif.
+serait verbeux et pénible. Heureusement, vous pouvez utiliser le système de type
+de Rust (et donc la vérification de type que fait le compilateur) pour assurer
+une partie des vérifications à votre place. Si votre fonction a un paramètre
+d'un type précis, vous pouvez continuer à écrire votre code en sachant que le
+compilateur s'est déjà assuré que vous avez une valeur valide. Par exemple, si
+vous obtenez un type de valeur plutôt qu'une `Option`, votre programme s'attend
+à obtenir *quelque chose* plutôt que *rien*. Votre code n'a donc pas à gérer les
+deux cas de variantes `Some` et `None` : la seule possibilité est qu'il y a une
+valeur. Du code qui essaye de ne rien fournir à votre fonction ne compilera même
+pas, donc votre fonction n'a pas besoin de vérifier ce cas-là lors de
+l'exécution. Un autre exemple est d'utiliser un type d'entier non signé comme
+`u32`, qui garantit que le paramètre n'est jamais strictement négatif.
 
 <!--
 ### Creating Custom Types for Validation
