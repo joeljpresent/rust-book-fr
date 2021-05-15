@@ -306,10 +306,10 @@ n'avons jamais validé que le nombre saisi par l'utilisateur était entre ces
 nombres avant de le comparer à notre nombre secret ; nous avons seulement
 vérifié que le nombre était positif. Dans ce cas, les conséquences ne sont pas
 très graves : notre résultat “C'est plus !” ou “C'est moins !” sera toujours
-correct. Mais ce serait une amélioration utile pour guider les suppositions de
-l'utilisateur vers des valeurs valides et pour avoir des comportements
-différents lorsqu'un utilisateur propose un nombre en dehors des limites ou, par
-exemple, lorsqu'un utilisateur saisit des lettres à la place.
+correct. Mais ce serait une amélioration utile pour aider l'utilisateur à faire
+des suppositions valides et pour avoir un comportement différent selon qu'un
+utilisateur propose un nombre en dehors des limites ou qu'il saisit, par
+exemple, des lettres à la place.
 
 <!--
 One way to do this would be to parse the guess as an `i32` instead of only a
@@ -317,9 +317,10 @@ One way to do this would be to parse the guess as an `i32` instead of only a
 number being in range, like so:
 -->
 
-Une façon de faire cela serait stocker le nombre saisi dans un `i32` plutôt que
-dans un `u32` afin de permettre d'obtenir potentiellement des nombres négatifs,
-et ensuite vérifier que le nombre est dans la plage autorisée, comme ceci :
+Une façon de faire cela serait de stocker le nombre saisi dans un `i32` plutôt
+que dans un `u32` afin de permettre d'obtenir potentiellement des nombres
+négatifs, et ensuite vérifier que le nombre est dans la plage autorisée, comme
+ceci :
 
 <!--
 ```rust,ignore
@@ -339,10 +340,10 @@ comparisons between `guess` and the secret number knowing that `guess` is
 between 1 and 100.
 -->
 
-L'expression `if` vérifie si la valeur est en dehors des limites, et informe
+L'expression `if` vérifie si la valeur est en dehors des limites et informe
 l'utilisateur du problème le cas échéant, puis utilise `continue` pour passer à
-la prochaine itération de la boucle et ainsi demander un nouveau nombre à
-deviner. Après l'expression `if`, nous pouvons continuer avec la comparaison
+la prochaine itération de la boucle et ainsi demander de saisir une nouvelle
+supposition. Après l'expression `if`, nous pouvons continuer avec la comparaison
 entre `supposition` et le nombre secret tout en sachant que `supposition` est
 entre 1 et 100.
 
@@ -354,8 +355,8 @@ tedious (and might impact performance).
 -->
 
 Cependant, ce n'est pas une solution idéale : si c'était absolument critique
-que le programme travaille avec des valeurs entre 1 et 100, et qu'il aurait de
-nombreuses fonctions qui reposent sur cette condition, cela pourrait être
+que le programme ne travaille qu'avec des valeurs entre 1 et 100 et qu'il aurait
+de nombreuses fonctions qui reposent sur cette condition, cela pourrait être
 fastidieux (et cela impacterait potentiellement la performance) de faire une
 vérification comme celle-ci dans chacune de ces fonctions.
 
@@ -368,13 +369,13 @@ confidently use the values they receive. Listing 9-10 shows one way to define a
 receives a value between 1 and 100.
 -->
 
-A la place, nous pourrions construire un nouveau type et y intégrer les
+À la place, nous pourrions construire un nouveau type et intégrer les
 vérifications dans la fonction de création d'une instance de ce type plutôt que
 de répéter partout les vérifications. Il est ainsi plus sûr pour les fonctions
 d'utiliser ce nouveau type dans leurs signatures et d'utiliser avec confiance
-les valeurs qu'ils reçoivent. L'entrée 9-10 montre une façon de définir un type
-`Supposition` qui ne créera une instance de `Supposition` que si la fonction
-`new` reçoit une valeur entre 1 et 100 :
+les valeurs qu'elles reçoivent. L'encart 9-10 montre une façon de définir un
+type `Supposition` qui ne créera une instance de `Supposition` que si la
+fonction `new` reçoit une valeur entre 1 et 100 :
 
 <!--
 <!-- Deliberately not using rustdoc_include here; the `main` function in the
@@ -398,7 +399,7 @@ purposes. -- >
 values between 1 and 100</span>
 -->
 
-<span class="caption">Entrée 9-10 : un type `Supposition` qui ne va continuer
+<span class="caption">Encart 9-10 : un type `Supposition` qui ne va continuer
 que si la valeur est entre 1 et 100</span>
 
 <!--
@@ -406,8 +407,8 @@ First, we define a struct named `Guess` that has a field named `value` that
 holds an `i32`. This is where the number will be stored.
 -->
 
-Premièrement, nous définissons une structure qui s'appelle `Supposition` qui a
-un champ `valeur` qui stocke un `i32`. C'est dans ce dernier que le nombre sera
+D'abord, nous définissons une structure qui s'appelle `Supposition` qui a un
+champ `valeur` qui stocke un `i32`. C'est dans ce dernier que le nombre sera
 stocké.
 
 <!--
@@ -426,20 +427,20 @@ of a `panic!` in the API documentation that you create in Chapter 14. If
 to the `value` parameter and return the `Guess`.
 -->
 
-Deuxièmement, nous implémentons une fonction associée `new` sur `Supposition`
-qui crée des instances de `Supposition`. La fonction `new` est conçue pour
-recevoir un paramètre `valeur` de type `i32` et retourner une `Supposition`. Le
-code dans le corps de la fonction `new` teste `valeur` pour s'assurer qu'elle
-est bien entre 1 et 100. Si `valeur` échoue à ce test, nous faisons appel à
-`panic!`, qui alertera le développeur qui écrit le code appelant qu'il a un
-bogue qu'il doit régler, car créer une `Supposition` avec `valeur` en dehors de
-cette plage va violer le contrat sur lequel s'appuie `Supposition::new`. Les
-conditions dans lesquels `Supposition::new` va paniquer devraient être
-expliquées dans la documentation sur l'API publique ; nous verrons les
-conventions pour indiquer l'éventualité d'un `panic!` dans la documentation de
-l'API que vous allez créer au chapitre 14. Si `valeur` passe le test, nous
-créons une nouvelle `Supposition` avec son champ `valeur` qui prend la valeur du
-paramètre `valeur` et retourne cette `Supposition`.
+Ensuite, nous implémentons une fonction associée `new` sur `Supposition` qui
+crée des instances de `Supposition`. La fonction `new` est conçue pour recevoir
+un paramètre `valeur` de type `i32` et retourner une `Supposition`. Le code dans
+le corps de la fonction `new` teste `valeur` pour s'assurer qu'elle est bien
+entre 1 et 100. Si `valeur` échoue à ce test, nous faisons appel à `panic!`, qui
+alertera le développeur qui écrit le code appelant qu'il a un bogue qu'il doit
+régler, car créer une `Supposition` avec `valeur` en dehors de cette plage va
+violer le contrat sur lequel s'appuie `Supposition::new`. Les conditions dans
+lesquelles `Supposition::new` va paniquer devraient être expliquées dans la
+documentation publique de l'API ; nous verrons les conventions pour indiquer
+l'éventualité d'un `panic!` dans la documentation de l'API que vous créerez
+au chapitre 14. Si `valeur` passe le test, nous créons une nouvelle
+`Supposition` avec son champ `valeur` qui prend la valeur du paramètre `valeur`
+et retourne cette `Supposition`.
 
 <!--
 Next, we implement a method named `value` that borrows `self`, doesn’t have any
@@ -453,17 +454,17 @@ the module *must* use the `Guess::new` function to create an instance of
 hasn’t been checked by the conditions in the `Guess::new` function.
 -->
 
-Ensuite, nous implémentons une méthode `valeur` qui emprunte `self`, elle n'a
-aucun autre paramètre, et retourne un `i32`. Ce genre de méthode est parfois
-appelé un *accesseur*, car son rôle est d'accéder aux données des champs et de
-les retourner. Cette méthode publique est nécessaire car le champ `valeur` de la
+Enfin, nous implémentons une méthode `valeur` qui emprunte `self`, n'a aucun
+autre paramètre, et retourne un `i32`. Ce genre de méthode est parfois appelé un
+*accesseur*, car son rôle est d'accéder aux données des champs et de les
+retourner. Cette méthode publique est nécessaire car le champ `valeur` de la
 structure `Supposition` est privé. Il est important que le champ `valeur` soit
 privé pour que le code qui utilise la structure `Supposition` ne puisse pas
 directement assigner une valeur à `valeur` : le code en dehors du module *doit*
 utiliser la fonction `Supposition::new` pour créer une instance de
-`Supposition`, qui se charge de rendre impossible la création d'une
-`Supposition` avec un champ `valeur` qui n'a pas été vérifié par les conditions
-dans la fonction `Supposition:new`.
+`Supposition`, ce qui permet d'empêcher la création d'une `Supposition` avec un
+champ `valeur` qui n'a pas été vérifié par les conditions dans la fonction
+`Supposition:new`.
 
 <!--
 A function that has a parameter or returns only numbers between 1 and 100 could
@@ -495,14 +496,14 @@ situations will make your code more reliable in the face of inevitable problems.
 
 Les fonctionnalités de gestion d'erreurs de Rust sont conçues pour vous aider à
 écrire du code plus résilient. La macro `panic!` signale que votre programme
-fonctionne dans de mauvaises conditions qu'il ne peut pas gérer et vous permet
-de dire au processus de s'arrêter au lieu d'essayer de continuer avec des
-valeurs invalides ou incorrectes. L'énumération `Result` utilise le système de
-type de Rust pour signaler que l'opération peut échouer de sorte que votre code
-puisse rattraper l'erreur. Vous pouvez utiliser `Result` pour dire au code qui
-appelle votre code qu'il a besoin de gérer le résultat et aussi les potentielles
-erreurs. Utiliser `panic!` et `Result` de manière appropriée va rendre votre
-code plus fiable face à des problèmes inévitables.
+est dans un état qu'il ne peut pas gérer et vous permet de dire au processus de
+s'arrêter au lieu d'essayer de continuer avec des valeurs invalides ou
+incorrectes. L'énumération `Result` utilise le système de type de Rust pour
+signaler que des opérations peuvent échouer de telle façon que votre code puisse
+rattraper l'erreur. Vous pouvez utiliser `Result` pour dire au code qui appelle
+votre code qu'il a besoin de gérer le résultat et aussi les potentielles
+erreurs. Utiliser `panic!` et `Result` de manière appropriée rendra votre code
+plus fiable face à des problèmes inévitables.
 
 <!--
 Now that you’ve seen useful ways that the standard library uses generics with
@@ -510,7 +511,6 @@ the `Option` and `Result` enums, we’ll talk about how generics work and how yo
 can use them in your code.
 -->
 
-Maintenant que vous avez vu les pratiques utiles suivies par la bibliothèque
-standard, comme les énumérations génériques `Option` et `Result`, nous allons
-voir comment les génériques fonctionnent et comment vous pouvez les utiliser
-dans votre code.
+Maintenant que vous avez vu la façon dont la bibliothèque standard tire parti de
+la généricité avec les énumérations `Option` et `Result`, nous allons voir
+comment la généricité fonctionne et comment vous pouvez l'utiliser dans votre code.
