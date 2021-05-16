@@ -78,7 +78,7 @@ your code for when you’re ready to make your program more robust.
 De la même manière, les méthodes `unwrap` et `expect` sont très pratiques pour
 coder des prototypes, avant même de décider comment gérer les erreurs. Ce sont
 des indicateurs clairs dans votre code pour plus tard quand vous serez prêt à
-rendre votre code plus résiliant aux échecs.
+rendre votre code plus résilient aux échecs.
 
 <!--
 If a method call fails in a test, you’d want the whole test to fail, even if
@@ -112,11 +112,11 @@ example:
 Vous pouvez utiliser `unwrap` lorsque vous avez une certaine logique qui
 garantit que le `Result` sera toujours une valeur `Ok`, mais que ce n'est pas le
 genre de logique que le compilateur arrive à comprendre. Vous aurez quand même
-une valeur `Result` à gérer : l'opération que vous utilisez peut théoriquement
-échouer de manière générale, même si dans votre cas c'est logiquement
-impossible. Si en inspectant manuellement le code vous vous rendez compte que
-vous n'aurez jamais une variante `Err`, vous pouvez tout à fait utiliser
-`unwrap`. Voici un exemple :
+une valeur `Result` à gérer : l'opération que vous utilisez peut échouer de
+manière générale, même si dans votre cas c'est logiquement impossible. Si en
+inspectant manuellement le code vous vous rendez compte que vous n'aurez jamais
+une variante `Err`, vous pouvez tout à fait utiliser `unwrap`. Voici un
+exemple :
 
 <!--
 ```rust
@@ -192,12 +192,12 @@ often appropriate if you’re calling external code that is out of your control
 and it returns an invalid state that you have no way of fixing.
 -->
 
-Si quelqu'un utilise votre code et lui fournit des valeurs qui n'ont pas de
-sens, la meilleure des choses à faire est d'utiliser `panic!` et d'avertir la
-personne qui utilise votre bibliothèque du bogue dans leur code afin qu'elle le
-règle pendant la phase de développement. De la même manière, `panic!` est
-parfois approprié si vous appelez du code externe sur lequel vous n'avez pas la
-main, et qu'il retourne un état invalide que vous ne pouvez pas corriger.
+Si une personne utilise votre bibliothèque et lui fournit des valeurs qui n'ont
+pas de sens, la meilleure des choses à faire est d'utiliser `panic!` et
+d'avertir cette personne du bogue dans son code afin qu'elle le règle pendant la
+phase de développement. De la même manière, `panic!` est parfois approprié si
+vous appelez du code externe sur lequel vous n'avez pas la main, et qu'il
+retourne un état invalide que vous ne pouvez pas corriger.
 
 <!--
 However, when failure is expected, it’s more appropriate to return a `Result`
@@ -243,12 +243,12 @@ de données actuelle est un problème de sécurité fréquent. Les fonctions ont
 souvent des *contrats* : leur comportement est garanti uniquement si les données
 d'entrée remplissent des conditions particulières. Paniquer lorsque le contrat
 est violé est justifié, car une violation de contrat signifie toujours un bogue
-du côté de l'appelant, et ce n'est le genre d'erreur que vous voulez que le code
-appelant gère explicitement. En fait, il n'y a aucun moyen rationnel pour que le
-code appelant se corrige : le *développeur* du code appelant doit corriger le
-code. Les contrats d'une fonction, en particulier lorsqu'une violation va causer
-un panic, doivent être expliqués dans la documentation de l'API de ladite
-fonction.
+du côté de l'appelant, et ce n'est pas le genre d'erreur que vous voulez que le
+code appelant gère explicitement. En fait, il n'y a aucun moyen rationnel pour
+que le code appelant se corrige : le *développeur* du code appelant doit
+corriger le code. Les contrats d'une fonction, en particulier lorsqu'une
+violation va causer un panic, doivent être expliqués dans la documentation de
+l'API de ladite fonction.
 
 <!--
 However, having lots of error checks in all of your functions would be verbose
@@ -266,18 +266,19 @@ the parameter is never negative.
 -->
 
 Cependant, avoir beaucoup de vérifications d'erreurs dans toutes vos fonctions
-serait verbeux et pénible. Heureusement, vous pouvez utiliser le système de type
-de Rust (et donc la vérification de type que fait le compilateur) pour assurer
-une partie des vérifications à votre place. Si votre fonction a un paramètre
-d'un type précis, vous pouvez continuer à écrire votre code en sachant que le
-compilateur s'est déjà assuré que vous avez une valeur valide. Par exemple, si
-vous obtenez un type de valeur plutôt qu'une `Option`, votre programme s'attend
-à obtenir *quelque chose* plutôt que *rien*. Votre code n'a donc pas à gérer les
-deux cas de variantes `Some` et `None` : la seule possibilité est qu'il y a une
-valeur. Du code qui essaye de ne rien fournir à votre fonction ne compilera même
-pas, donc votre fonction n'a pas besoin de vérifier ce cas-là lors de
-l'exécution. Un autre exemple est d'utiliser un type d'entier non signé comme
-`u32`, qui garantit que le paramètre n'est jamais strictement négatif.
+serait verbeux et pénible. Heureusement, vous pouvez utiliser le système de
+types de Rust (et donc la vérification de type que fait le compilateur) pour
+assurer une partie des vérifications à votre place. Si votre fonction a un
+paramètre d'un type précis, vous pouvez continuer à écrire votre code en sachant
+que le compilateur s'est déjà assuré que vous avez une valeur valide. Par
+exemple, si vous obtenez un type de valeur plutôt qu'une `Option`, votre
+programme s'attend à obtenir *quelque chose* plutôt que *rien*. Votre code n'a
+donc pas à gérer les deux cas de variantes `Some` et `None` : la seule
+possibilité est qu'il y a une valeur. Du code qui essaye de ne rien fournir à
+votre fonction ne compilera même pas, donc votre fonction n'a pas besoin de
+vérifier ce cas-là lors de l'exécution. Un autre exemple est d'utiliser un type
+d'entier non signé comme `u32`, qui garantit que le paramètre n'est jamais
+strictement négatif.
 
 <!--
 ### Creating Custom Types for Validation
@@ -498,7 +499,7 @@ Les fonctionnalités de gestion d'erreurs de Rust sont conçues pour vous aider 
 écrire du code plus résilient. La macro `panic!` signale que votre programme
 est dans un état qu'il ne peut pas gérer et vous permet de dire au processus de
 s'arrêter au lieu d'essayer de continuer avec des valeurs invalides ou
-incorrectes. L'énumération `Result` utilise le système de type de Rust pour
+incorrectes. L'énumération `Result` utilise le système de types de Rust pour
 signaler que des opérations peuvent échouer de telle façon que votre code puisse
 rattraper l'erreur. Vous pouvez utiliser `Result` pour dire au code qui appelle
 votre code qu'il a besoin de gérer le résultat et aussi les potentielles
